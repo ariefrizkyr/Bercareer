@@ -27,13 +27,25 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% unless current_page?(company_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
-          <li><%= link_to 'Employers', company_path %></li>
-          <li><%= link_to 'Sign In', new_student_session_path %></li>
-          <li><%= link_to 'Sign Up', new_student_registration_path %></li>
+          <% if current_student %>
+            <li><%= link_to 'My Applications', '#' %></li>
+            <li><%= link_to 'Message Center', '#' %></li>
+            <li><%= link_to 'Sign Out', destroy_student_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Employers', company_path %></li>
+            <li><%= link_to 'Sign In', new_student_session_path %></li>
+            <li><%= link_to 'Sign Up', new_student_registration_path %></li>
+          <% end %>
         <% else %>
-          <li><%= link_to 'Students', root_path %></li>
-          <li><%= link_to 'Employers Sign In', new_company_session_path %></li>
-          <li><%= link_to 'Post a Job', new_company_registration_path %></li>
+          <% if current_company %>
+            <li><%= link_to 'View Applicants', '#' %></li>
+            <li><%= link_to 'Message Center', '#' %></li>
+            <li><%= link_to 'Sign Out', destroy_company_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Students', root_path %></li>
+            <li><%= link_to 'Employers Sign In', new_company_session_path %></li>
+            <li><%= link_to 'Post a Job', new_company_registration_path %></li>
+          <% end %>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->
