@@ -5,4 +5,6 @@ class Company < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :full_name, presence: true
+  validates :company_name, presence: true
+  validates :phone_number, presence: true, numericality: true
 end
