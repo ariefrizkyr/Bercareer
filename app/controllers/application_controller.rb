@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected  
+  protected
+    def after_sign_in_path_for(resource)
+      resource.is_a?(Company) ? company_path : root_path
+    end
+
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << :full_name << :company_name << :phone_number
       devise_parameter_sanitizer.for(:account_update) << :full_name << :company_name << :phone_number
