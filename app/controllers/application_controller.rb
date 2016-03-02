@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
       resource.is_a?(Company) ? company_path : root_path
     end
 
-    def after_sign_up_path_for(resource)
-      resource.is_a?(Company) ? company_path : root_path
-    end
-
     def after_sign_out_path_for(resource)
       resource.is_a?(Company) ? company_path : root_path
     end
