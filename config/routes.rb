@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  
+
   get 'company' => 'pages#company_index'
 
   devise_for :companies

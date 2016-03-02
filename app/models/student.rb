@@ -5,4 +5,5 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :full_name, presence: true
+  validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be university email' }
 end

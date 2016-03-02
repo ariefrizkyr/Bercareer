@@ -5,14 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(student)
-    root_path
-  end
-
-  def after_sign_in_path_for(company)
-    company_path
-  end
-
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << :full_name << :company_name << :phone_number
