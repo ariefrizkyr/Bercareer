@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   get 'company' => 'pages#company_index'
 
-  devise_for :companies, :path => '', :path_names => {:sign_in => 'companies/sign-in', :sign_out => 'companies/sign-out', :sign_up => 'companies/sign-up'}
-  devise_for :students, :path => '', :path_names => {:sign_in => 'students/sign-in', :sign_out => 'students/sign-out', :sign_up => 'students/sign-up'}
+  devise_for :companies
+  devise_for :students
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
