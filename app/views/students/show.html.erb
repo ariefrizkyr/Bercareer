@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-4">
+    Name : <%= @student.full_name %><br>
+    Gender : <%= @student.resume.gender %><br>
+    Date of Birth : <%= @student.resume.birth_date.strftime("%C %B, %Y") %><br>
+    Address : <%= @student.resume.address %><br>
+    City : <%= @student.resume.city %><br>
+    Province : <%= @student.resume.province %><br>
+    Country : <%= @student.resume.country %><br>
+    Postal Code : <%= @student.resume.postal_code %>
+  </div>
+
+  <div class="col-md-4">
+    University : <%= @student.resume.university %><br>
+    Major : <%= @student.resume.major %><br>
+    Level : <%= @student.resume.level %><br>
+    Graduation Year (Expected) : <%= @student.resume.grad_year.strftime("%Y") %><br>
+    GPA/IPK : <%= @student.resume.gpa %><br>
+    Skills : <%= @student.resume.skill_list %><br>
+    Languages : <%= @student.resume.language_list %>
+  </div>
+
+  <div class="col-md-4">
+    Facebook : <%= @student.resume.facebook_url %><br>
+    Twitter : <%= @student.resume.twitter_url %><br>
+    LinkedIn : <%= @student.resume.linkedin_url %><br>
+    Google+ : <%= @student.resume.googleplus_url %>
+  </div>
+</div>
+
+<div class="row text-center">
+  <%= link_to 'Edit Resume', edit_student_resume_path(current_student), class: 'btn btn-primary' %>
+</div>

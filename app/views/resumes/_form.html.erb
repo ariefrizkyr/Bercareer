@@ -89,15 +89,15 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :gpa, input_html: { min: 1.0, max: 4.0}%>
+        <%= f.input :gpa, input_html: { min: 1.0, max: 4.0} %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.skill_counts{ |s| puts s.name } && @resume.skill_list %>
+        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.skill_counts{ |s| puts s.name } && @resume.skills.map { |t| t.name } %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.language_counts{ |l| puts l.name } && @resume.language_list %>
+        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.language_counts{ |l| puts l.name } && @resume.languages.map { |t| t.name } %>
       </div>
     </div>
     <div class="col-md-4">
