@@ -1,8 +1,11 @@
-<%= simple_form_for @resume, url: student_resume_path do |f| %>
+<%= simple_form_for(@resume, url: student_resume_path, html: { multipart: true }) do |f| %>
   <div class="row">
     <div class="col-md-4">
       <h3>Personal Information</h3>
 
+      <div class="form-inputs">
+        <%= f.input :photo %>
+      </div>
       <div class="form-inputs">
         <%= f.input :gender, collection: ["Male", "Female"] %>
       </div>

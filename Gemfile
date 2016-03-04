@@ -11,10 +11,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'figaro', '~> 1.1.1'
+gem 'valid_url', '~> 0.0.4'
 gem 'devise', '~> 3.5.6'
 gem 'acts-as-taggable-on', '~> 3.5'
 gem 'simple_form', '~> 3.2.1'
 gem 'select2-rails', '~> 4.0.1'
+gem 'paperclip', '~> 4.3.5'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
