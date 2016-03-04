@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304060504) do
+ActiveRecord::Schema.define(version: 20160304062323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,31 @@ ActiveRecord::Schema.define(version: 20160304060504) do
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
 
+  create_table "resumes", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "gender"
+    t.date     "birth_date"
+    t.string   "phone_number"
+    t.text     "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.string   "postal_code"
+    t.string   "university"
+    t.string   "major"
+    t.string   "level"
+    t.date     "grad_year"
+    t.float    "gpa"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.string   "linkedin_url"
+    t.string   "googleplus_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "resumes", ["student_id"], name: "index_resumes_on_student_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -57,4 +82,25 @@ ActiveRecord::Schema.define(version: 20160304060504) do
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  add_foreign_key "resumes", "students"
 end

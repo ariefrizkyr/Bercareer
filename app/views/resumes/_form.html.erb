@@ -1,0 +1,136 @@
+<%= simple_form_for @resume, url: student_resume_path do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Personal Information</h3>
+
+      <div class="form-inputs">
+        <%= f.input :gender, collection: ["Male", "Female"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :birth_date, as: :date, start_year: Date.today.year - 30,
+                                 end_year: Date.today.year - 15,
+                                 order: [:day, :month, :year], label: 'Date of Birth' %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :address %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :city, collection: ["Jakarta", "Bogor", "Depok", "Tangerang",
+                                        "Bekasi", "Bandung", "Purwokerto", "Semarang",
+                                        "Yogyakarta", "Solo", "Surabaya", "Malang"]
+                                        %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :province, collection: ["DKI Jakarta", "Banten", "Jawa Barat",
+                                            "Jawa Tengah", "DIY Yogyakarta",
+                                            "Jawa Timur"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :country, collection: ["Indonesia"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :postal_code %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Education</h3>
+
+      <div class="form-inputs">
+        <%= f.input :university %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :major, input_html: { class: 'selection' }, collection: ["Pendidikan Guru Sekolah Dasar (PGSD)", "Bimbingan dan Konseling",
+                                         "Manajemen Pendidikan", "Kurikulum dan Teknologi Pendidikan",
+                                         "Pendidikan Luar Sekolah", "Pendidikan Luar Biasa",
+                                         "Pendidikan Anak Usia Dini (PAUD)", "Administrasi Pendidikan",
+                                         "Teknik Pertambangan dan Perminyakan", "Teknik Metalurgi", "Teknik Sipil",
+                                         "Teknik Lingkungan", "Teknik Kelautan", "Arsitektur", "Teknik Elektro",
+                                         "Geodesi", "Teknik Mesin", "Teknik Industri", "Teknik Informatika",
+                                         "Teknik Perencanaan Wilayah dan Kota", "Teknik Perkapalan",
+                                         "Aeronautika dan Astronautika (Teknik Penerbangan)", "Oseanografi",
+                                         "Teknik Nuklir", "Teknik Geologi", "Ilmu Komputer", "Ilmu Kedokteran",
+                                         "Ilmu Kesehatan Gigi dan Mulut", "Ilmu Gizi", "Kesehatan Masyarakat",
+                                         "Keperawatan", "Kebidanan", "Manajemen Rumah Sakit", "Dokter Hewan",
+                                         "Radiologi", "Farmasi", "Kesehatan Lingkungan", "Ilmu Keolahragaan",
+                                         "Akuntansi", "Manajemen Keuangan", "Manajemen Sumber Daya Manusia",
+                                         "Manajemen Operasi", "Manajemen Pemasaran", "Perpajakan", "Manajemen Perbankan",
+                                         "Ilmu Ekonomi", "Bisnis Internasional", "Manajemen Informatika",
+                                         "Ekonomi Pembangunan", "Entrepreneurship", "Manajemen Bisnis",
+                                         "Agronomi dan Hortikultura", "Mikrobiologi Pertanian", "Agribisnis",
+                                         "Agroteknologi", "Matematika", "Fisika", "Kimia", "Biologi", "Statistika",
+                                         "Astronomi", "Bioteknologi", "Geofisika", "Meteorologi", "Sastra Inggris",
+                                         "Arkeologi", "Sastra Jawa", "Sastra Arab", "Sastra Jepang", "Sastra Indonesia",
+                                         "Sastra Rusia", "Sastra Prancis", "Sastra Korea", "Sastra Belanda",
+                                         "Sastra Jerman", "Sastra Cina", "Pariwisata", "Ilmu Politik", "Kriminologi",
+                                         "Filsafat", "Psikologi", "Hukum", "Sejarah", "Sosiologi", "Jurnalistik",
+                                         "Antropologi", "Hubungan Internasional", "Kesejahteraan Sosial",
+                                         "Ilmu Pemerintahan", "Administrasi Negara", "Administrasi Fiskal",
+                                         "Administrasi Bisnis", "Seni Rupa", "Seni Kriya", "Seni Musik", "Seni Tari",
+                                         "Tata Boga", "Tata Busana", "Tata Rias dan Kecantikan", "Seni Karawitan",
+                                         "Desain Komunikasi Visual (DKV)", "Desain Interior", "Desain Produk",
+                                         "Furniture Design"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :level, collection: ["D1", "D2", "D3", "S1"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :grad_year, as: :date, start_year: Date.today.year, end_year: Date.today.year + 10,
+                                           ignore_day: true, ignore_month: true, order: [:year] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :gpa, input_html: { min: 1.0, max: 4.0}%>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.skill_counts{ |s| puts s.name } && @resume.skill_list %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.language_counts{ |l| puts l.name } && @resume.language_list %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Portfolio</h3>
+        <!-- portfolio partial form goes here -->
+
+      <hr>
+
+      <h3>Social Media Accounts</h3>
+
+      <div class="form-inputs">
+        <%= f.input :facebook_url %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :twitter_url %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :linkedin_url %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :googleplus_url %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="actions text-center">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<script>
+  $(document).ready(function() {
+    $('.selection').each(function() {
+      $(this).select2({
+        theme: 'bootstrap'
+      });
+    });
+  });
+  $(document).ready(function() {
+   $('.taggable').each(function() {
+    $(this).select2({
+      tags: [],
+      tokenSeparators: [','],
+      theme: 'bootstrap',
+      placeholder: 'Separated by comma'
+    });
+   });
+  });
+</script>
