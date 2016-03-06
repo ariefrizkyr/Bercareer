@@ -1,0 +1,46 @@
+<%= simple_form_for(@profile, url: company_profile_path, html: { multipart: true }) do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h3>Company Information</h3>
+
+      <div class="form-inputs">
+        <%= f.input :address %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :city, collection: ["Jakarta", "Bogor", "Depok", "Tangerang",
+                                        "Bekasi", "Bandung", "Purwokerto", "Semarang",
+                                        "Yogyakarta", "Solo", "Surabaya", "Malang"]
+                                        %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :province, collection: ["DKI Jakarta", "Banten", "Jawa Barat",
+                                            "Jawa Tengah", "DIY Yogyakarta",
+                                            "Jawa Timur"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :country, collection: ["Indonesia"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :website %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :field, collection: ["Field 1 here", "Field 2 here"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :description %>
+      </div>
+
+      <div class="actions text-center">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+<% end %>

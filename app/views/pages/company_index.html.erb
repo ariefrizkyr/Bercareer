@@ -4,5 +4,12 @@
   <div class="col-lg-12 text-center">
     <h1>Bercareer Company Index</h1>
     <p class="lead">This is the temp company homepage</p>
+    <% if current_company %>
+      <% if current_company.profile %>
+        <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Create Profile', new_company_profile_path(current_company), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
   </div>
 </div>

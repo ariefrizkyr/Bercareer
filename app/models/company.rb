@@ -4,6 +4,8 @@ class Company < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :profile
+
   validates :full_name, presence: true
   validates :company_name, presence: true
   validates :phone_number, presence: true, numericality: true
