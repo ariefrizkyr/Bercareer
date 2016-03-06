@@ -1,7 +1,11 @@
 class Resume < ActiveRecord::Base
 
   belongs_to :student
+  has_many :experiences
+  has_many :portfolios
 
+  accepts_nested_attributes_for :experiences, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :portfolios, reject_if: :all_blank, allow_destroy: true
   acts_as_taggable_on :skills, :languages
 
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
@@ -21,8 +25,8 @@ class Resume < ActiveRecord::Base
   validates :gpa, presence: true
   validates :skill_list, presence: true
   validates :language_list, presence: true
-  validates :facebook_url, url: true
-  validates :twitter_url, url: true
-  validates :linkedin_url, url: true
-  validates :googleplus_url, url: true
+  validates :facebook_url, url: true, allow_blank: true
+  validates :twitter_url, url: true, allow_blank: true
+  validates :linkedin_url, url: true, allow_blank: true
+  validates :googleplus_url, url: true, allow_blank: true
 end

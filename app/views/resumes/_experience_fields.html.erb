@@ -1,0 +1,28 @@
+<div class="nested-fields">
+  <%= f.input :company_name %>
+  <%= f.input :position %>
+  <%= f.input :start_work, as: :date, start_year: Date.today.year - 20,
+                                      end_year: Date.today.year, ignore_day: true,
+                                      order: [:month, :year] %>
+  <%= f.input :is_current, input_html: {id: 'current'} %>
+  <%= f.input :end_work, input_html: {id: 'end_work'} , as: :date, start_year: Date.today.year - 20,
+                                      end_year: Date.today.year, ignore_day: true,
+                                      order: [:month, :year] %>
+  <%= f.input :description %>
+  <%= link_to_remove_association 'Remove', f, class: 'form-button btn btn-default' %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $("[id*='current']").click(function() {
+      var isCurrent = $(this).prop("checked");
+      var endDateSelects = $("[id*='end_work']");
+      if (isCurrent == true) {
+        endDateSelects.prop("disabled", "disabled");
+      }
+      else {
+        endDateSelects.prop("disabled", false);
+      }
+    });
+  });
+</script>

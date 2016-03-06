@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304145752) do
+ActiveRecord::Schema.define(version: 20160305072651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,31 @@ ActiveRecord::Schema.define(version: 20160304145752) do
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer  "resume_id"
+    t.string   "company_name"
+    t.string   "position"
+    t.date     "start_work"
+    t.date     "end_work"
+    t.boolean  "is_current"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "experiences", ["resume_id"], name: "index_experiences_on_resume_id", using: :btree
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer  "resume_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "portfolios", ["resume_id"], name: "index_portfolios_on_resume_id", using: :btree
 
   create_table "resumes", force: :cascade do |t|
     t.integer  "student_id"
@@ -110,5 +135,7 @@ ActiveRecord::Schema.define(version: 20160304145752) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  add_foreign_key "experiences", "resumes"
+  add_foreign_key "portfolios", "resumes"
   add_foreign_key "resumes", "students"
 end

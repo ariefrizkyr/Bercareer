@@ -1,7 +1,7 @@
 class ResumesController < ApplicationController
   before_action :authenticate_student!
   before_action :find_resume, only: [:edit, :update, :only_current_student]
-  before_action :only_current_student
+  before_action :only_current_student, only: [:edit, :update]
 
   def new
     @resume = Resume.new
@@ -41,7 +41,10 @@ class ResumesController < ApplicationController
                                      :city, :province, :country, :postal_code, :university,
                                      :major, :level, :grad_year, :gpa, :facebook_url,
                                      :twitter_url, :linkedin_url, :googleplus_url,
-                                     skill_list:[], language_list:[])
+                                     skill_list:[], language_list:[], experiences_attributes: [:id,
+                                     :company_name, :position, :start_work, :end_work, :is_current,
+                                     :description, :_destroy], portfolios_attributes: [:id, :title,
+                                     :description, :link, :_destroy])
     end
 
     def only_current_student

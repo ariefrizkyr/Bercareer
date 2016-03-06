@@ -22,6 +22,28 @@
   </div>
 
   <div class="col-md-4">
+    Experiences :<br>
+    <ul>
+      <% @student.resume.experiences.each do |exp| %>
+        <li>Company Name: <%= exp.company_name %></li>
+        <li>Position: <%= exp.position %></li>
+        <li>Time Period: <%= exp.start_work.strftime("%B %Y") %> -
+        <% if exp.is_current == true %>
+           Currently Working here
+        <% else %>
+          <%= exp.end_work.strftime("%B %Y") %>
+        <% end %></li>
+        <li>Description: <br><%= exp.description %></li>
+      <% end %>
+    </ul>
+    Portfolios :<br>
+    <ul>
+      <% @student.resume.portfolios.each do |port| %>
+        <li>Title: <%= port.title %></li>
+        <li>Description: <%= port.description %></li>
+        <li>Link: <%= port.link %></li>
+      <% end %>
+    </ul>
     Facebook : <%= @student.resume.facebook_url %><br>
     Twitter : <%= @student.resume.twitter_url %><br>
     LinkedIn : <%= @student.resume.linkedin_url %><br>

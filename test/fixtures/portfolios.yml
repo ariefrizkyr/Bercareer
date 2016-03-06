@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resume_id: 
+  title: MyString
+  description: MyText
+  link: MyString
+
+two:
+  resume_id: 
+  title: MyString
+  description: MyText
+  link: MyString

@@ -15,6 +15,7 @@ gem 'valid_url', '~> 0.0.4'
 gem 'devise', '~> 3.5.6'
 gem 'acts-as-taggable-on', '~> 3.5'
 gem 'simple_form', '~> 3.2.1'
+gem 'cocoon', '~> 1.2.7'
 gem 'select2-rails', '~> 4.0.1'
 gem 'paperclip', '~> 4.3.5'
 

@@ -104,8 +104,26 @@
       </div>
     </div>
     <div class="col-md-4">
-      <h3>Portfolio</h3>
-        <!-- portfolio partial form goes here -->
+      <h3>Work Experiences</h3>
+
+      <div class="form-inputs">
+        <%= f.simple_fields_for :experiences do |exp| %>
+          <%= render 'experience_fields', f: exp %>
+        <% end %>
+        <br>
+        <%= link_to_add_association 'Add Experience', f, :experiences, class: 'btn btn-default' %>
+      </div>
+
+      <hr>
+
+      <h3>Portfolios</h3>
+      <div class="form-inputs">
+        <%= f.simple_fields_for :portfolios do |exp| %>
+          <%= render 'portfolio_fields', f: exp %>
+        <% end %>
+        <br>
+        <%= link_to_add_association 'Add Portfolio', f, :portfolios, class: 'btn btn-default' %>
+      </div>
 
       <hr>
 

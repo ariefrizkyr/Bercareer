@@ -8,6 +8,5 @@ class Student < ActiveRecord::Base
 
   validates :full_name, presence: true
   validates :nim, presence: true, numericality: true
-  validates :email, presence: true
-   # format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be university email' }
+  validates :email, presence: true, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be university email' }
 end
