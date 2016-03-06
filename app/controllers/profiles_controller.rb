@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:address, :city, :province, :country,
+      params.require(:profile).permit(:logo, :address, :city, :province, :country,
                                       :website, :field, :description)
     end
 

@@ -1,6 +1,9 @@
 class Profile < ActiveRecord::Base
   belongs_to :company
 
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
+
   validates :address, presence: true
   validates :city, presence: true
   validates :province, presence: true
