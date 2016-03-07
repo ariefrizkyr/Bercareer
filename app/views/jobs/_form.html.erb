@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for @job do |f| %>
+      <div class="form-inputs">
+        <%= f.input :job_title %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :job_type, collection: ["Part Time", "Internship"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :address %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :city, collection: ["Jakarta", "Bogor", "Depok", "Tangerang",
+                                        "Bekasi", "Bandung", "Purwokerto", "Semarang",
+                                        "Yogyakarta", "Solo", "Surabaya", "Malang"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :province, collection: ["DKI Jakarta", "Banten", "Jawa Barat",
+                                            "Jawa Tengah", "DIY Yogyakarta",
+                                            "Jawa Timur"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :country, collection: ["Indonesia"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :short_desc %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :job_desc %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :requirement %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :benefit %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :is_paid, input_html: {class: 'paid'} %>
+      </div>
+
+      <div class="form-inputs">
+        <div class="input-group">
+          <div class="input-group-addon">IDR</div>
+          <%= f.input :salary, input_html: {class: 'salary'}%>
+        </div>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :salary_interval, collection: ["Per Hour", "Per Day", "Per Month"], input_html: {class: 'salary'} %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :start_period, as: :date, start_year: Date.today.year,
+                                            end_year: Date.today.year + 5,
+                                            order: [:day, :month, :year] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :end_period, as: :date, start_year: Date.today.year,
+                                            end_year: Date.today.year + 5,
+                                            order: [:day, :month, :year] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :start_work %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :end_work %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :deadline %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :urgency, collection: ["Not urgent", "Immediate",
+                                           "Really urgent (ASAP)"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :difficulties, collection: ["Easy Application", "Intermmediate Application",
+                                                 "Strict Application"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :main_category, collection: ["Category 1", "Category 2", "Category 3"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :second_category, collection: ["Category 1", "Category 2", "Category 3"] %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :active %>
+      </div>
+
+      <div class="actions text-center">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

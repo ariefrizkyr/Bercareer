@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
       flash[:success] = "Profile created!"
       redirect_to company_path(params[:company_id])
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
       flash[:success] = "Profile updated!"
       redirect_to company_path(current_company)
     else
-      render 'edit'
+      render :edit
     end
   end
 

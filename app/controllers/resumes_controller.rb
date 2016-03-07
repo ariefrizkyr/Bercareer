@@ -14,12 +14,12 @@ class ResumesController < ApplicationController
       flash[:success] = "Resume created!"
       redirect_to student_path(params[:student_id])
     else
-      render 'new'
+      render :new
     end
   end
 
   def edit
-    
+
   end
 
   def update
@@ -27,7 +27,7 @@ class ResumesController < ApplicationController
       flash[:success] = "Resume updated!"
       redirect_to student_path(current_student)
     else
-      render 'edit'
+      render :edit
     end
   end
 

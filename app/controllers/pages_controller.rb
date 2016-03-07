@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   end
 
-  def company_index
+  def company_home
 
   end
 end

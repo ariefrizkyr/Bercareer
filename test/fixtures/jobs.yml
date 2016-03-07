@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_title: MyString
+  job_type: MyString
+  address: MyText
+  city: MyString
+  province: MyString
+  country: MyString
+  short_desc: MyText
+  job_desc: MyText
+  requirement: MyText
+  benefit: MyText
+  is_paid: false
+  salary: 1
+  salary_interval: MyString
+  start_period: 2016-03-07
+  end_period: 2016-03-07
+  start_work: 2016-03-07 13:24:42
+  end_work: 2016-03-07 13:24:42
+  deadline: 2016-03-07 13:24:42
+  urgency: MyString
+  difficulties: MyString
+  main_category: MyString
+  second_category: MyString
+  active: false
+  company_id: 
+
+two:
+  job_title: MyString
+  job_type: MyString
+  address: MyText
+  city: MyString
+  province: MyString
+  country: MyString
+  short_desc: MyText
+  job_desc: MyText
+  requirement: MyText
+  benefit: MyText
+  is_paid: false
+  salary: 1
+  salary_interval: MyString
+  start_period: 2016-03-07
+  end_period: 2016-03-07
+  start_work: 2016-03-07 13:24:42
+  end_work: 2016-03-07 13:24:42
+  deadline: 2016-03-07 13:24:42
+  urgency: MyString
+  difficulties: MyString
+  main_category: MyString
+  second_category: MyString
+  active: false
+  company_id: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306035357) do
+ActiveRecord::Schema.define(version: 20160307062442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,37 @@ ActiveRecord::Schema.define(version: 20160306035357) do
   end
 
   add_index "experiences", ["resume_id"], name: "index_experiences_on_resume_id", using: :btree
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "job_title"
+    t.string   "job_type"
+    t.text     "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.text     "short_desc"
+    t.text     "job_desc"
+    t.text     "requirement"
+    t.text     "benefit"
+    t.boolean  "is_paid"
+    t.integer  "salary"
+    t.string   "salary_interval"
+    t.date     "start_period"
+    t.date     "end_period"
+    t.time     "start_work"
+    t.time     "end_work"
+    t.datetime "deadline"
+    t.string   "urgency"
+    t.string   "difficulties"
+    t.string   "main_category"
+    t.string   "second_category"
+    t.boolean  "active"
+    t.integer  "company_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
 
   create_table "portfolios", force: :cascade do |t|
     t.integer  "resume_id"
@@ -155,6 +186,7 @@ ActiveRecord::Schema.define(version: 20160306035357) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   add_foreign_key "experiences", "resumes"
+  add_foreign_key "jobs", "companies"
   add_foreign_key "portfolios", "resumes"
   add_foreign_key "profiles", "companies"
   add_foreign_key "resumes", "students"

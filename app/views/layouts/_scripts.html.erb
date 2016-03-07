@@ -1,22 +1,21 @@
 <script>
   $(document).ready(function() {
+    // selection
     $('.selection').each(function() {
       $(this).select2({
         theme: 'bootstrap'
       });
     });
-  });
-  $(document).ready(function() {
-   $('.taggable').each(function() {
-    $(this).select2({
-      tags: [],
-      tokenSeparators: [','],
-      theme: 'bootstrap',
-      placeholder: 'Separated by comma'
+    // taggable
+    $('.taggable').each(function() {
+     $(this).select2({
+       tags: [],
+       tokenSeparators: [','],
+       theme: 'bootstrap',
+       placeholder: 'Separated by comma'
+     });
     });
-   });
-  });
-  $(document).ready(function() {
+    // experience current work
     $(".current").each(function() {
       $(this).click(function() {
         var isCurrent = $(this).prop("checked");
@@ -27,6 +26,16 @@
           $(".end_work").prop("disabled", false);
         }
       });
+    });
+    // job is paid
+    $(".paid").click(function() {
+      var isPaid = $(this).prop("checked");
+      if (isPaid == true) {
+        $(".salary").prop("disabled", "disabled");
+      }
+      else {
+        $(".salary").prop("disabled", false);
+      }
     });
   });
 </script>
