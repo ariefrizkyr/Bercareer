@@ -3,6 +3,10 @@ class JobsController < ApplicationController
   before_action :authenticate_company!, except: [:show]
 
   def index
+    @jobs = Job.all
+  end
+
+  def your_job
     @jobs = current_company.jobs
   end
 

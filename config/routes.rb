@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'company-home' => 'pages#company_home'
+  get 'your-jobs' => 'jobs#your_job'
 
   devise_for :companies
   devise_for :students
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   end
 
   resources :jobs
+
 end
