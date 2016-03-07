@@ -12,7 +12,7 @@
     <% end %>
     Application Dificulties: <%= job.difficulties %><br>
     <%= job.urgency %><br>
-    <%= job.deadline.strftime("%H:%M") %><br>
+    <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
     <%= link_to 'View Job', job, class: 'btn btn-primary' %>
     <% if current_company %>
       <%= link_to 'Edit Job', job, class: 'btn btn-success' %><br>

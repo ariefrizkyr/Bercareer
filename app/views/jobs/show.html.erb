@@ -16,7 +16,7 @@
 <%= @job.province %><br>
 <%= @job.country %><br>
 <%= @job.start_work.strftime("%H:%M") %> - <%= @job.end_work.strftime("%H:%M") %><br>
-<%= @job.deadline.strftime("%H:%M") %><br>
+<%= @job.deadline.strftime("%d %B %Y at %H:%M") %><br>
 <%= @job.main_category %> <%= @job.second_category %><br>
 <% if current_company %>
   <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
