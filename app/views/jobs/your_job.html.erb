@@ -14,6 +14,6 @@
     <%= job.urgency %><br>
     <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
     <%= link_to 'View Job', job, class: 'btn btn-primary' %>
-    <%= link_to 'Edit Job', job, class: 'btn btn-success' %><br>
+    <%= link_to 'Edit Job', edit_job_path(job), class: 'btn btn-success' %><br>
   <% end %>
 </div>
