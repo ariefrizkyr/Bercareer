@@ -1,0 +1,23 @@
+<%= @job.job_title %> at <%= @job.company.company_name %><br>
+<%= @job.job_type %><br>
+<%= @job.start_period.strftime("%B %Y") %> - <%= @job.start_period.strftime("%B %Y") %><br>
+<%= @job.short_desc %><br>
+<%= @job.job_desc %><br>
+<%= @job.requirement %><br>
+<% if @job.is_paid == true %>
+  Paid<br>
+<% else %>
+  No paid<br>
+<% end %>
+<%= @job.difficulties %><br>
+<%= @job.urgency %><br>
+<%= @job.address %><br>
+<%= @job.city %><br>
+<%= @job.province %><br>
+<%= @job.country %><br>
+<%= @job.start_work.strftime("%H:%M") %> - <%= @job.end_work.strftime("%H:%M") %><br>
+<%= @job.deadline.strftime("%H:%M") %><br>
+<%= @job.main_category %> <%= @job.second_category %><br>
+<% if current_company %>
+  <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
+<% end %>

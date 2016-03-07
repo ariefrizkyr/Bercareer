@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :find_job, only: [:show, :edit, :update]
+  before_action :find_job, only: [:show, :edit, :update, :only_current_company]
   before_action :authenticate_company!, except: [:show]
 
   def index
@@ -48,5 +48,11 @@ class JobsController < ApplicationController
                                   :start_period, :end_period, :start_work, :end_work,
                                   :deadline, :urgency, :difficulties, :main_category,
                                   :second_category, :active)
+    end
+
+    def only_current_company
+      unless @job.company_id == current_company.id
+      redirect_to root_path, notice: "Access denied as you are not owner of this Job"
+     end
     end
 end

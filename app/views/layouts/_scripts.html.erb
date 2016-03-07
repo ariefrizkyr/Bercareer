@@ -31,10 +31,10 @@
     $(".paid").click(function() {
       var isPaid = $(this).prop("checked");
       if (isPaid == true) {
-        $(".salary").prop("disabled", "disabled");
+        $(".salary").prop("disabled", false);
       }
       else {
-        $(".salary").prop("disabled", false);
+        $(".salary").prop("disabled", "disabled");
       }
     });
   });

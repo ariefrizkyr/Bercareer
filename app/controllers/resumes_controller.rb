@@ -50,8 +50,7 @@ class ResumesController < ApplicationController
 
     def only_current_student
       unless @resume.student_id == current_student.id
-      flash[:notice] = 'Access denied as you are not owner of this Resume'
-      redirect_to root_path
+      redirect_to root_path, notice: "Access denied as you are not owner of this Resume"
      end
     end
 end

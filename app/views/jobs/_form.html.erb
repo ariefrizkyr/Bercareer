@@ -46,7 +46,7 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :is_paid, input_html: {class: 'paid'} %>
+        <%= f.input :is_paid, input_html: {class: 'paid', checked: true}  %>
       </div>
 
       <div class="form-inputs">
@@ -62,22 +62,22 @@
 
       <div class="form-inputs">
         <%= f.input :start_period, as: :date, start_year: Date.today.year,
-                                            end_year: Date.today.year + 5,
-                                            order: [:day, :month, :year] %>
+                                            end_year: Date.today.year + 5, ignore_day: true,
+                                            order: [:month, :year] %>
       </div>
 
       <div class="form-inputs">
         <%= f.input :end_period, as: :date, start_year: Date.today.year,
-                                            end_year: Date.today.year + 5,
-                                            order: [:day, :month, :year] %>
+                                            end_year: Date.today.year + 5, ignore_day: true,
+                                            order: [:month, :year] %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :start_work %>
+        <%= f.input :start_work, minute_step: 15 %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :end_work %>
+        <%= f.input :end_work, minute_step: 15 %>
       </div>
 
       <div class="form-inputs">
@@ -103,7 +103,7 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :active %>
+        <%= f.input :active, input_html: {checked: true} %>
       </div>
 
       <div class="actions text-center">
