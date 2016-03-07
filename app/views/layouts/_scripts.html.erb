@@ -16,4 +16,17 @@
     });
    });
   });
+  $(document).ready(function() {
+    $(".current").each(function() {
+      $(this).click(function() {
+        var isCurrent = $(this).prop("checked");
+        if (isCurrent == true) {
+          $(".end_work").prop("disabled", "disabled");
+        }
+        else {
+          $(".end_work").prop("disabled", false);
+        }
+      });
+    });
+  });
 </script>

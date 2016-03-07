@@ -2,13 +2,15 @@
   <div class="col-lg-12 text-center">
     <h1>Bercareer</h1>
     <p class="lead">This is the temp homepage</p>
-    
+
     <% if current_student %>
       <% if current_student.resume %>
         <%= link_to 'Edit Resume', edit_student_resume_path(current_student), class: 'btn btn-primary' %>
       <% else %>
         <%= link_to 'Create Resume', new_student_resume_path(current_student), class: 'btn btn-primary' %>
       <% end %>
+
+      <%= link_to 'View Students', students_path, class: 'btn btn-success' %> 
     <% end %>
   </div>
 </div>
