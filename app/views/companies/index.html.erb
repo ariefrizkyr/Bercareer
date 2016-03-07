@@ -1,0 +1,7 @@
+<% @companies.each do |company| %>
+  <% if company.profile %>
+    <%= link_to company do %>
+      <%= company.company_name %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,11 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_company!
+  before_action :authenticate_company!, except: [:index]
   before_action :find_profile, only: [:edit, :update, :only_current_student]
   before_action :only_current_company, only: [:edit, :update]
-
-  def show
-    @company = Company.find(params[:company_id])
-  end
 
   def new
     @profile = Profile.new
@@ -16,7 +12,7 @@ class ProfilesController < ApplicationController
 
     if @profile.save
       flash[:success] = "Profile created!"
-      redirect_to company_profile_path(params[:company_id])
+      redirect_to company_path(params[:company_id])
     else
       render 'new'
     end
@@ -29,7 +25,7 @@ class ProfilesController < ApplicationController
   def update
     if @profile.update_attributes(profile_params)
       flash[:success] = "Profile updated!"
-      redirect_to company_profile_path(current_company)
+      redirect_to company_path(current_company)
     else
       render 'edit'
     end

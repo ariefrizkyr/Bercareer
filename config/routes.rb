@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  get 'company' => 'pages#company_index'
+  get 'company-home' => 'pages#company_home'
 
   devise_for :companies
   devise_for :students

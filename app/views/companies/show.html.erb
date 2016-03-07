@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= image_tag @company.profile.logo.url(:medium) %><br>
+    Company Name: <%= @company.company_name %><br>
+    Field: <%= @company.profile.field %><br>
+    Description:<br>
+    <%= @company.profile.description %><br>
+    Address: <%= @company.profile.address %><br>
+    City: <%= @company.profile.city %><br>
+    Province: <%= @company.profile.province %><br>
+    Country: <%= @company.profile.country %><br>
+    Company Website: <%= @company.profile.website %><br>
+    <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
+  </div>
+</div>

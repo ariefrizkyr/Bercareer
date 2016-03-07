@@ -7,15 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <% unless current_page?(company_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
+      <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
         <%= link_to 'Bercareer', root_path, class: 'navbar-brand' %>
       <% else %>
-        <%= link_to 'Bercareer', company_path, class: 'navbar-brand' %>
+        <%= link_to 'Bercareer', company_home_path, class: 'navbar-brand' %>
       <% end %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-          <% unless current_page?(company_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
+          <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Internship', '#' %></li>
             <li><%= link_to 'Journal', '#' %></li>
@@ -26,13 +26,13 @@
           <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% unless current_page?(company_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
+        <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
           <% if current_student %>
             <li><%= link_to 'My Applications', '#' %></li>
             <li><%= link_to 'Message Center', '#' %></li>
             <li><%= link_to 'Sign Out', destroy_student_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to 'Employers', company_path %></li>
+            <li><%= link_to 'Employers', company_home_path %></li>
             <li><%= link_to 'Sign In', new_student_session_path %></li>
             <li><%= link_to 'Sign Up', new_student_registration_path %></li>
           <% end %>
