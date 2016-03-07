@@ -6,6 +6,7 @@
 <%= @job.requirement %><br>
 <% if @job.is_paid == true %>
   Paid<br>
+  IDR<%= @job.salary %> <%= @job.salary_interval %><br>
 <% else %>
   No paid<br>
 <% end %>
