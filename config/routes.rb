@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'company-home' => 'pages#company_home'
   get 'your-jobs' => 'jobs#your_job'
+  get 'your-applications' => 'applies#your_applications'
 
   devise_for :companies
   devise_for :students
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   resources :jobs
 
   resources :jobs do
-    resources :applies
+    resources :applies, only: [:create]
   end
 
 end

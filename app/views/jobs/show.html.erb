@@ -18,7 +18,16 @@
 <%= @job.country %><br>
 <%= @job.start_work.strftime("%H:%M") %> - <%= @job.end_work.strftime("%H:%M") %><br>
 <%= @job.deadline.strftime("%d %B %Y at %H:%M") %><br>
-<%= @job.main_category %> <%= @job.second_category %><br>
+<%= @job.main_category %> <%= @job.second_category %><br><br>
+<% if @apps == true %>
+    You have applied to this job<br>
+    <%= link_to 'View Applications', your_applications_path, class: 'btn btn-primary' %>
+  <% else %>
+  <%= simple_form_for([@job, @job.applies.new]) do |f| %>
+    <%= f.hidden_field :job_id, value: @job.id %>
+    <%= f.button :submit, class: 'btn btn-success' %>
+  <% end %>
+<% end %>
 <% if current_company %>
   <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
 <% end %>

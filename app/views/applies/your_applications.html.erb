@@ -1,0 +1,8 @@
+<div class="row">
+  <% @applies.each do |apply| %>
+    <div class="row">
+      <%= apply.job.job_title %> at <%= apply.job.company.company_name %><br>
+      <%= link_to 'View Job Detail', apply.job, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

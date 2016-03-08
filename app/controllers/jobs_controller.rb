@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :find_job, only: [:show, :edit, :update, :only_current_company]
-  before_action :authenticate_company!, except: [:show]
+  before_action :authenticate_company!, except: [:index, :show]
 
   def index
     @jobs = Job.all
@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def show
-
+    
   end
 
   def new

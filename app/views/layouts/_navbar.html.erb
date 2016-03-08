@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav">
           <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
             <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'Internship', '#' %></li>
+            <li><%= link_to 'Internship', jobs_path %></li>
             <li><%= link_to 'Journal', '#' %></li>
           <% else %>
             <li><%= link_to 'Products', '#' %></li>
@@ -28,7 +28,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) %>
           <% if current_student %>
-            <li><%= link_to 'My Applications', '#' %></li>
+            <li><%= link_to 'My Applications', your_applications_path %></li>
             <li><%= link_to 'Message Center', '#' %></li>
             <li><%= link_to 'Sign Out', destroy_student_session_path, method: :delete %></li>
           <% else %>

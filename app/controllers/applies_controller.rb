@@ -3,7 +3,11 @@ class AppliesController < ApplicationController
 
   def create
     @apply = current_student.applies.create(apply_params)
-    redirect_to @apply.job
+    redirect_to @apply.job, notice: "Application Success!"
+  end
+
+  def your_applications
+    @applies = current_student.applies
   end
 
   private
