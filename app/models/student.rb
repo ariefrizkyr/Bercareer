@@ -5,6 +5,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :resume
+  has_many :applies
 
   validates :full_name, presence: true
   validates :nim, presence: true, numericality: true

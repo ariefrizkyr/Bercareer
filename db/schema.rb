@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307062442) do
+ActiveRecord::Schema.define(version: 20160308035550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applies", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "applies", ["job_id"], name: "index_applies_on_job_id", using: :btree
+  add_index "applies", ["student_id"], name: "index_applies_on_student_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -185,6 +195,8 @@ ActiveRecord::Schema.define(version: 20160307062442) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  add_foreign_key "applies", "jobs"
+  add_foreign_key "applies", "students"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "jobs", "companies"
   add_foreign_key "portfolios", "resumes"

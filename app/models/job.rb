@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
   belongs_to :company
+  has_many :applies
 
   validates :job_title, presence: true
   validates :job_type, presence: true
