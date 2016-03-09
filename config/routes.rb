@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'company-home' => 'pages#company_home'
   get 'your-jobs' => 'jobs#your_job'
   get 'your-applications' => 'applies#your_applies'
+  get 'your-applicants' => 'jobs#your_applicants'
 
   devise_for :companies
   devise_for :students

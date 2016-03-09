@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :company
   has_many :applies
+  has_many :students, through: :applies
 
   validates :job_title, presence: true
   validates :job_type, presence: true

@@ -12,6 +12,6 @@ class AppliesController < ApplicationController
 
   private
     def apply_params
-      params.require(:apply).permit(:job_id)
+      params.require(:apply).permit(:job_id, :student_id)
     end
 end
