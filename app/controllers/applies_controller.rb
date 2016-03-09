@@ -6,7 +6,7 @@ class AppliesController < ApplicationController
     redirect_to @apply.job, notice: "Application Success!"
   end
 
-  def your_applications
+  def your_applies
     @applies = current_student.applies
   end
 
