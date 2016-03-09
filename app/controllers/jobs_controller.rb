@@ -16,7 +16,6 @@ class JobsController < ApplicationController
 
   def your_applicants
     @applicants = current_company.applies
-    # @applicants = @jobs.map(&:students).flatten
   end
 
   def new
