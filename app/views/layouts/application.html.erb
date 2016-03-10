@@ -8,7 +8,11 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/navbar' %>
+  <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) || current_company %>
+    <%= render 'layouts/studentnavbar' %>
+  <% else %>
+    <%= render 'layouts/companynavbar' %>
+  <% end %>
 
   <div class="container">
     <%= render 'layouts/messages' %>
