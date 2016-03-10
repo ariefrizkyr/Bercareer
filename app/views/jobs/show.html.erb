@@ -22,6 +22,9 @@
 <% if current_student %>
     <%= render 'applies/form' %>
 <% end %>
+
 <% if current_company %>
-  <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
+  <% if @job.company_id == current_company.id %>
+    <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
