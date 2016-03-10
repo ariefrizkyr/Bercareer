@@ -1,5 +1,6 @@
 class CompaniesController <ApplicationController
   before_action :authenticate_company!, only: [:your_job, :your_applicant]
+  before_action :only_current_company, only: [:show]
 
   def index
     @companies = Company.includes(:profile)
@@ -22,4 +23,10 @@ class CompaniesController <ApplicationController
   def your_applicant
     @applicants = current_company.applies
   end
+
+  private
+    def only_current_company
+      @company = Company.find(params[:id])
+      @profile = @company.profile
+    end
 end

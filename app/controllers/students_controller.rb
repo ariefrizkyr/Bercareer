@@ -1,5 +1,6 @@
 class StudentsController <ApplicationController
   before_action :only_current_student, only: [:show]
+  before_action :authenticate_student!, only: [:your_apply]
 
   def index
     @students = Student.includes(:resume)

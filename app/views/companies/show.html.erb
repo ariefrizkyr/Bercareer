@@ -10,6 +10,10 @@
     Province: <%= @company.profile.province %><br>
     Country: <%= @company.profile.country %><br>
     Company Website: <%= @company.profile.website %><br>
-    <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
+    <% if current_company %>
+      <% if @profile.company_id == current_company.id %>
+        <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
   </div>
 </div>
