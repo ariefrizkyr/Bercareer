@@ -9,6 +9,6 @@ class Student < ActiveRecord::Base
   has_many :jobs, through: :applies
 
   validates :full_name, presence: true
-  validates :nim, presence: true, numericality: true
+  validates :nim, presence: true, numericality: true, uniqueness: true
   validates :email, presence: true, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be university email' }
 end

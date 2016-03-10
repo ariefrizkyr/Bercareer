@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'company-home' => 'pages#company_home'
-  get 'your-jobs' => 'jobs#your_job'
-  get 'your-applications' => 'applies#your_applies'
-  get 'your-applicants' => 'jobs#your_applicants'
+  get 'your-jobs' => 'companies#your_job'
+  get 'your-applications' => 'applies#your_apply'
+  get 'your-applicants' => 'companies#your_applicant'
 
   devise_for :companies
   devise_for :students
