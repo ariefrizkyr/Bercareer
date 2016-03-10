@@ -6,10 +6,6 @@ class AppliesController < ApplicationController
     redirect_to @apply.job, notice: "Application Success!"
   end
 
-  def your_apply
-    @applies = current_student.applies
-  end
-
   private
     def apply_params
       params.require(:apply).permit(:job_id, :student_id)
