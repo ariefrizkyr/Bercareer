@@ -14,6 +14,7 @@ class ResumesController < ApplicationController
       flash[:success] = "Resume created!"
       redirect_to student_path(params[:student_id])
     else
+      flash[:error] = "Error occured!"
       render :new
     end
   end
@@ -27,6 +28,7 @@ class ResumesController < ApplicationController
       flash[:success] = "Resume updated!"
       redirect_to student_path(current_student)
     else
+      flash[:error] = "Error occured!"
       render :edit
     end
   end

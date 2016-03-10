@@ -3,7 +3,8 @@ class AppliesController < ApplicationController
 
   def create
     @apply = current_student.applies.create(apply_params)
-    redirect_to @apply.job, notice: "Application Success!"
+    flash[:success] = "Application Success!"
+    redirect_to @apply.job
   end
 
   private

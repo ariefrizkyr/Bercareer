@@ -15,18 +15,6 @@
        placeholder: 'Separated by comma'
      });
     });
-    // experience current work
-    $(".current").each(function() {
-      $(this).click(function() {
-        var isCurrent = $(this).prop("checked");
-        if (isCurrent == true) {
-          $(".end_work").prop("disabled", "disabled");
-        }
-        else {
-          $(".end_work").prop("disabled", false);
-        }
-      });
-    });
     // job is paid
     $(".paid").click(function() {
       var isPaid = $(this).prop("checked");

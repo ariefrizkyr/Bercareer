@@ -18,8 +18,10 @@ class JobsController < ApplicationController
     @job = current_company.jobs.build(job_params)
 
     if @job.save
-      redirect_to @job, notice: "Job created!"
+      flash[:success] = "Job created!"
+      redirect_to @job
     else
+      flash[:error] = "Error occured!"
       render :new
     end
   end
@@ -30,8 +32,10 @@ class JobsController < ApplicationController
 
   def update
     if @job.update
-      redirect_to @job, notice: "Job updated!"
+      flash[:success] = "Job updated!"
+      redirect_to @job
     else
+      flash[:error] = "Error occured!"
       render :edit
     end
   end
