@@ -19,10 +19,10 @@
       $(this).click(function() {
         var isCurrent = $(this).prop("checked");
         if (isCurrent == true) {
-          $(".end_work").prop("disabled", "disabled");
+          $(this).closest('.form-group').next('.form-group').find('.end_work').prop("disabled", "disabled");
         }
         else {
-          $(".end_work").prop("disabled", false);
+          $(this).closest('.form-group').next('.form-group').find('.end_work').prop("disabled", false);
         }
       });
     });

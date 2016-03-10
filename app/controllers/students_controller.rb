@@ -1,4 +1,6 @@
 class StudentsController <ApplicationController
+  before_action :only_current_student, only: [:show]
+
   def index
     @students = Student.includes(:resume)
   end
@@ -10,4 +12,10 @@ class StudentsController <ApplicationController
   def your_apply
     @applies = current_student.applies
   end
+
+  private
+    def only_current_student
+      @student = Student.find(params[:id])
+      @resume = @student.resume
+    end
 end
