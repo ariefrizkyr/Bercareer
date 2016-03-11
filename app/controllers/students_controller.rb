@@ -1,6 +1,6 @@
 class StudentsController <ApplicationController
   before_action :only_current_student, only: [:show]
-  before_action :authenticate_student!, only: [:your_apply]
+  before_action :authenticate_student!, only: [:your_apply, :your_accepted_job]
 
   def index
     @students = Student.includes(:resume)
@@ -12,6 +12,10 @@ class StudentsController <ApplicationController
 
   def your_apply
     @applies = current_student.applies
+  end
+
+  def your_accepted_job
+    @accepts = current_student.accepts
   end
 
   private

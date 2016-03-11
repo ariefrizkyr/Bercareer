@@ -1,0 +1,8 @@
+<div class="row">
+  <% @accepts.each do |accept| %>
+    <div class="row">
+      <%= accept.job.job_title %> at <%= accept.company.company_name %><br>
+      <%= link_to 'View Job Detail', accept.job, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

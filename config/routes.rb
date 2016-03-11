@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   get 'company-home' => 'pages#company_home'
   get 'your-applications' => 'students#your_apply'
-  get 'your-applicants' => 'companies#your_applicant'
+  get 'your-accepted-jobs' => 'students#your_accepted_job'
   get 'your-jobs' => 'companies#your_job'
+  get 'your-applicants' => 'companies#your_applicant'
   get 'your-employee' => 'companies#your_employee'
 
   devise_for :companies
