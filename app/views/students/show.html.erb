@@ -51,9 +51,9 @@
   </div>
 </div>
 <% if current_company %>
-  <% if @student.jobs(params[:job_id]) %>
+  <% if @student.jobs %>
     <div class="row text-center">
-      This student is applying for:
+      <p>This student is applying for:</p>
       <%= render 'accepts/form' %>
     </div>
   <% end %>

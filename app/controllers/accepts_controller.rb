@@ -3,8 +3,14 @@ class AcceptsController < ApplicationController
 
   def create
     @accept = current_company.accepts.create(accept_params)
-    flash[:success] = "Your candidate has been accepted!"
-    redirect_to your_employee_path
+
+    if @accept.save
+      flash[:success] = "Your candidate has been accepted!"
+      redirect_to your_employee_path
+    else
+      flash[:error] = "You have accepted this candidate!"
+      redirect_to your_employee_path
+    end
   end
 
   private
