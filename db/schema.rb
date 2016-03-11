@@ -38,16 +38,6 @@ ActiveRecord::Schema.define(version: 20160311001552) do
   add_index "applies", ["job_id"], name: "index_applies_on_job_id", using: :btree
   add_index "applies", ["student_id"], name: "index_applies_on_student_id", using: :btree
 
-  create_table "approvals", force: :cascade do |t|
-    t.integer  "company_id"
-    t.integer  "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "approvals", ["company_id"], name: "index_approvals_on_company_id", using: :btree
-  add_index "approvals", ["job_id"], name: "index_approvals_on_job_id", using: :btree
-
   create_table "companies", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -68,13 +58,6 @@ ActiveRecord::Schema.define(version: 20160311001552) do
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
   create_table "experiences", force: :cascade do |t|
     t.integer  "resume_id"
@@ -120,19 +103,6 @@ ActiveRecord::Schema.define(version: 20160311001552) do
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "conversation_id"
-    t.integer  "student_id"
-    t.integer  "company_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "messages", ["company_id"], name: "index_messages_on_company_id", using: :btree
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["student_id"], name: "index_messages_on_student_id", using: :btree
 
   create_table "portfolios", force: :cascade do |t|
     t.integer  "resume_id"
@@ -242,13 +212,8 @@ ActiveRecord::Schema.define(version: 20160311001552) do
   add_foreign_key "accepts", "students"
   add_foreign_key "applies", "jobs"
   add_foreign_key "applies", "students"
-  add_foreign_key "approvals", "companies"
-  add_foreign_key "approvals", "jobs"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "jobs", "companies"
-  add_foreign_key "messages", "companies"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "students"
   add_foreign_key "portfolios", "resumes"
   add_foreign_key "profiles", "companies"
   add_foreign_key "resumes", "students"
