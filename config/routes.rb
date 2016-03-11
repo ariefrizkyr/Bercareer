@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get 'your-applications' => 'students#your_apply'
   get 'your-applicants' => 'companies#your_applicant'
   get 'your-jobs' => 'companies#your_job'
+  get 'your-employee' => 'companies#your_employee'
 
   devise_for :companies
   devise_for :students
 
   resources :students do
     resource :resume
+    resources :accepts, only: [:create]
   end
 
   resources :companies do

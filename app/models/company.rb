@@ -7,6 +7,8 @@ class Company < ActiveRecord::Base
   has_one :profile
   has_many :jobs
   has_many :applies, through: :jobs
+  has_many :accepts
+  has_many :students, through: :accepts
 
   validates :full_name, presence: true
   validates :company_name, presence: true

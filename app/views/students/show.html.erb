@@ -50,6 +50,14 @@
     Google+ : <%= @student.resume.googleplus_url %>
   </div>
 </div>
+<% if current_company %>
+  <% if @student.jobs(params[:job_id]) %>
+    <div class="row text-center">
+      This student is applying for:
+      <%= render 'accepts/form' %>
+    </div>
+  <% end %>
+<% end %>
 <% if current_student %>
   <% if @resume.student_id == current_student.id %>
     <div class="row text-center">

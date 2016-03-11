@@ -1,0 +1,5 @@
+<%= form_for([@student, @student.accepts.new]) do |f| %>
+  <%= f.hidden_field :student_id, value: @student.id %><br>
+  <%= f.collection_select(:job_id, @student.jobs, :id, :job_title )  %><br><br>
+  <%= f.submit 'Hire', class: 'btn btn-success' %>
+<% end %>

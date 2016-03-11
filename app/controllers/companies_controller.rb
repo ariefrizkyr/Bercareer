@@ -24,6 +24,10 @@ class CompaniesController <ApplicationController
     @applicants = current_company.applies
   end
 
+  def your_employee
+    @employees = current_company.accepts
+  end
+
   private
     def only_current_company
       @company = Company.find(params[:id])

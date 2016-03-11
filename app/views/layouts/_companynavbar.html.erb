@@ -18,6 +18,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_company %>
           <li><%= link_to 'View Applicants', your_applicants_path %></li>
+          <li><%= link_to 'View Hired List', your_employee_path %></li>
           <li><%= link_to 'Message Center', '#' %></li>
           <li><%= link_to 'Sign Out', destroy_company_session_path, method: :delete %></li>
         <% else %>
