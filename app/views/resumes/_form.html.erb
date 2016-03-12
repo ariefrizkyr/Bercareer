@@ -96,11 +96,11 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.skill_counts{ |s| puts s.name } && @resume.skills.map { |t| t.name } %>
+        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'skills').uniq.pluck(:name) %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: @resume.language_counts{ |l| puts l.name } && @resume.languages.map { |t| t.name } %>
+        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'languages').uniq.pluck(:name) %>
       </div>
     </div>
     <div class="col-md-4">
