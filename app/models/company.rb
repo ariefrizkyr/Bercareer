@@ -10,6 +10,12 @@ class Company < ActiveRecord::Base
   has_many :accepts
   has_many :students, through: :accepts
 
+  acts_as_messageable
+
+  def mailboxer_email(object)
+   return email
+  end
+  
   validates :full_name, presence: true
   validates :company_name, presence: true
   validates :phone_number, presence: true, numericality: true, uniqueness: true

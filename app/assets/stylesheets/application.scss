@@ -55,3 +55,12 @@ body {
   border-color: #bce8f1;
   color: #3a87ad;
 }
+
+/** Messages **/
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}

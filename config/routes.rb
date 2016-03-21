@@ -11,6 +11,20 @@ Rails.application.routes.draw do
   devise_for :companies
   devise_for :students
 
+  resources :messages, only: [:new, :create]
+  
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+
+    collection do
+      delete :empty_trash
+    end
+  end
+
   resources :students do
     resource :resume
     resources :accepts, only: [:create]
@@ -19,8 +33,6 @@ Rails.application.routes.draw do
   resources :companies do
     resource :profile
   end
-
-  resources :jobs
 
   resources :jobs do
     resources :applies, only: [:create]
