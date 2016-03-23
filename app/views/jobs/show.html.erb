@@ -20,7 +20,11 @@
 <%= @job.deadline.strftime("%d %B %Y at %H:%M") %><br>
 <%= @job.main_category %> <%= @job.second_category %><br><br>
 <% if current_student %>
+  <% unless Apply.where(student_id: current_student.id, job_id: @job.id).count > 0 %>
     <%= render 'applies/form' %>
+  <% else %>
+    You have applied to this job.
+  <% end %>
 <% end %>
 
 <% if current_company %>
