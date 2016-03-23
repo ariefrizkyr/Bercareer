@@ -65,7 +65,7 @@
     <% end %>
 
     <% if @student.accepts %>
-      <%= link_to 'Give feedback', new_student_feedback_path(@student) %>
+      <%= link_to 'Give feedback', new_student_feedback_path(@student) unless Feedback.where(company_id: current_company.id, student_id: @student.id).count > 0 %>
     <% end %>
     <br><br>
   </div>
