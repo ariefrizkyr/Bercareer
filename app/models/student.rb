@@ -9,6 +9,7 @@ class Student < ActiveRecord::Base
   has_many :jobs, through: :applies
   has_many :accepts
   has_many :companies, through: :accepts
+  has_many :feedbacks
 
   acts_as_messageable
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :students
 
   resources :messages, only: [:new, :create]
-  
+
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :students do
     resource :resume
     resources :accepts, only: [:create]
+    resources :feedbacks
   end
 
   resources :companies do

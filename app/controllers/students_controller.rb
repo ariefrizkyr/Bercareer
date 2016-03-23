@@ -8,6 +8,12 @@ class StudentsController <ApplicationController
 
   def show
     @student = Student.find(params[:id])
+
+    if @student.feedbacks.blank?
+      @average_feedback = 0
+    else
+      @average_feedback = @student.feedbacks.average(:rating).round(2)
+    end
   end
 
   def your_apply

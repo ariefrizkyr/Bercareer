@@ -1,0 +1,10 @@
+<div class="feedback-rating" data-score="<%= feedback.rating %>"></div>
+<p><%= feedback.comment %></p>
+
+<% if company_signed_in? %>
+  <% if feedback.company_id == current_company.id %>
+    <%= link_to 'Edit', edit_student_feedback_path(feedback.student, feedback) %>
+    <%= link_to 'Delete', student_feedback_path(feedback.student, feedback), method: :delete,
+    data: {confirm: 'Are you sure?'} %>
+  <% end %>
+<% end %>

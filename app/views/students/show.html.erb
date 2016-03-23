@@ -36,6 +36,11 @@
         <li>Description: <br><%= exp.description %></li>
       <% end %>
     </ul>
+    Feedbacks :<br>
+    <div class="average-feedback-rating" data-score="<%= @average_feedback %>"></div>
+    <span>Based on <%= @student.feedbacks.count %> feedbacks</span>
+    <hr>
+    <%= render @student.feedbacks %><br>
     Portfolios :<br>
     <ul>
       <% @student.resume.portfolios.each do |port| %>
@@ -47,7 +52,7 @@
     Facebook : <%= @student.resume.facebook_url %><br>
     Twitter : <%= @student.resume.twitter_url %><br>
     LinkedIn : <%= @student.resume.linkedin_url %><br>
-    Google+ : <%= @student.resume.googleplus_url %>
+    Google+ : <%= @student.resume.googleplus_url %><br>
   </div>
 </div>
 <% if current_company %>
@@ -58,6 +63,11 @@
       <p>This student is applying for:</p>
       <%= render 'accepts/form' %>
     <% end %>
+
+    <% if @student.accepts %>
+      <%= link_to 'Give feedback', new_student_feedback_path(@student) %>
+    <% end %>
+    <br><br>
   </div>
 <% end %>
 <% if current_student %>
@@ -72,3 +82,23 @@
     </div>
   <% end %>
 <% end %>
+
+<script>
+  $('.feedback-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-feedback-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
