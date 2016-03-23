@@ -11,6 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+/public/system/profiles/logos
+/public/system/resumes/photos
 
 # Ignore application configuration
 /config/application.yml
