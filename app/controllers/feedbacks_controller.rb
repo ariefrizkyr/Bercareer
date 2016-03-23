@@ -11,8 +11,10 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
 
     if @feedback.save
+      flash[:success] = "Feedback created!"
       redirect_to student_path(@student)
     else
+      flash[:error] = "Error occured!"
       render :new
     end
   end
@@ -23,8 +25,10 @@ class FeedbacksController < ApplicationController
 
   def update
     if @feedback.update(feedback_params)
+      flash[:success] = "Feedback updated!"
       redirect_to student_path(@student)
     else
+      flash[:error] = "Error occured!"
       render :edit
     end
   end

@@ -10,6 +10,7 @@ class Student < ActiveRecord::Base
   has_many :accepts
   has_many :companies, through: :accepts
   has_many :feedbacks
+  has_many :reviews
 
   acts_as_messageable
 

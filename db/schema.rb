@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323120101) do
+ActiveRecord::Schema.define(version: 20160323225225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -261,6 +261,18 @@ ActiveRecord::Schema.define(version: 20160323120101) do
 
   add_index "resumes", ["student_id"], name: "index_resumes_on_student_id", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.integer  "student_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["company_id"], name: "index_reviews_on_company_id", using: :btree
+  add_index "reviews", ["student_id"], name: "index_reviews_on_student_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -316,4 +328,6 @@ ActiveRecord::Schema.define(version: 20160323120101) do
   add_foreign_key "portfolios", "resumes"
   add_foreign_key "profiles", "companies"
   add_foreign_key "resumes", "students"
+  add_foreign_key "reviews", "companies"
+  add_foreign_key "reviews", "students"
 end

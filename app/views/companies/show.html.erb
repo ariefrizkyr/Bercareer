@@ -10,6 +10,17 @@
     Province: <%= @company.profile.province %><br>
     Country: <%= @company.profile.country %><br>
     Company Website: <%= @company.profile.website %><br>
+    Reviews :<br>
+    <div class="average-review-rating" data-score="<%= @average_review %>"></div>
+    <span>Based on <%= @company.reviews.count %> reviews</span>
+    <hr>
+    <%= render @company.reviews %><br>
+    <% if current_student %>
+      <% if @company.accepts %>
+        <%= link_to 'Give review', new_company_review_path(@company) unless
+        Review.where(company_id: @company.id, student_id: current_student.id).count > 0 %>
+      <% end %>
+    <% end %>
     <% if current_company %>
       <% if @profile.company_id == current_company.id %>
         <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
@@ -17,3 +28,23 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

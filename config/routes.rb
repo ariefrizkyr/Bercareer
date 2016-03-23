@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     resource :profile
+    resources :reviews
   end
 
   resources :jobs do

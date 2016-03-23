@@ -10,7 +10,8 @@ class Company < ActiveRecord::Base
   has_many :accepts
   has_many :students, through: :accepts
   has_many :feedbacks
-
+  has_many :reviews
+  
   acts_as_messageable
 
   def mailboxer_email(object)

@@ -9,11 +9,11 @@ class CompaniesController <ApplicationController
   def show
     @company = Company.find(params[:id])
 
-    # @applied = Apply.where("job_id = ? AND student_id = ?", @job.id, current_student.id).present?
-    # if current_student
-
-    # @rating = @company.ratings
-    # @hasRating = @ratings.find_by(student_id: current_student.id) if current_student
+    if @company.reviews.blank?
+     @average_review = 0
+    else
+     @average_review = @company.reviews.average(:rating).round(2)
+    end
   end
 
   def your_job
