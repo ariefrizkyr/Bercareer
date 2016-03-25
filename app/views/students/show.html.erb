@@ -59,14 +59,14 @@
   <div class="row text-center">
     <%= link_to 'Send message', new_message_path(to: @student.id), class: 'btn btn-default' %>
 
-    <% if @student.jobs %>
+    <% if @student.applies %>
       <p>This student is applying for:</p>
       <%= render 'accepts/form' %>
     <% end %>
 
-    <% if @student.accepts %>
-      <%= link_to 'Give feedback', new_student_feedback_path(@student)
-      unless Feedback.where(company_id: current_company.id, student_id: @student.id).count > 0 %>
+    <% if @student.jobs %>
+      <%= link_to 'Give feedback', new_student_feedback_path(@student) unless
+      Feedback.where(company_id: current_company.id, student_id: @student.id).count > 0 %>
     <% end %>
     <br><br>
   </div>

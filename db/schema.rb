@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20160323225225) do
   add_index "applies", ["job_id"], name: "index_applies_on_job_id", using: :btree
   add_index "applies", ["student_id"], name: "index_applies_on_student_id", using: :btree
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "avg",           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -178,14 +169,6 @@ ActiveRecord::Schema.define(version: 20160323225225) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "overall_avg",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "portfolios", force: :cascade do |t|
     t.integer  "resume_id"
     t.string   "title"
@@ -215,18 +198,6 @@ ActiveRecord::Schema.define(version: 20160323225225) do
   end
 
   add_index "profiles", ["company_id"], name: "index_profiles_on_company_id", using: :btree
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.integer  "cacheable_id"
-    t.string   "cacheable_type"
-    t.float    "avg",            null: false
-    t.integer  "qty",            null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "resumes", force: :cascade do |t|
     t.integer  "student_id"

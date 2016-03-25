@@ -3,11 +3,11 @@ class JobsController < ApplicationController
   before_action :authenticate_company!, except: [:index, :show]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.all.order("deadline ASC")
   end
 
   def show
-    
+
   end
 
   def new
