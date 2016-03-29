@@ -26,14 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    resource :resume
+    resource :resume, except: [:index, :show]
     resources :accepts, only: [:create]
-    resources :feedbacks
+    resources :feedbacks, except: [:index, :show]
   end
 
   resources :companies do
-    resource :profile
-    resources :reviews
+    resource :profile, except: [:index, :show]
+    resources :reviews, except: [:index, :show]
   end
 
   resources :jobs do
