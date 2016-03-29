@@ -14,15 +14,11 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :city, collection: ["Jakarta", "Bogor", "Depok", "Tangerang",
-                                        "Bekasi", "Bandung", "Purwokerto", "Semarang",
-                                        "Yogyakarta", "Solo", "Surabaya", "Malang"] %>
+        <%= f.input :city, collection: city %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :province, collection: ["DKI Jakarta", "Banten", "Jawa Barat",
-                                            "Jawa Tengah", "DIY Yogyakarta",
-                                            "Jawa Timur"] %>
+        <%= f.input :province, collection: province %>
       </div>
 
       <div class="form-inputs">
@@ -52,7 +48,7 @@
       <div class="form-inputs">
         <div class="input-group">
           <div class="input-group-addon">IDR</div>
-          <%= f.input :salary, input_html: {class: 'salary'}%>
+          <%= f.input :salary, input_html: {class: 'salary'} %>
         </div>
       </div>
 
@@ -95,39 +91,11 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :main_category, input_html: {class: 'selection'}, collection: ["Akunting dan keuangan", "Ambassador", "Animasi",
-                                                 "Arsitek", "Asuransi", "Bank", "Desain",
-                                                 "Desain Grafis", "Data Entry", "Designer",
-                                                 "Fashion", "Film", "Fotograf","Hotel",
-                                                 "Hubungan Internasional", "IT", "Komunikasi",
-                                                 "Komunitas ", "Komputer", "Konsultan", "Keuangan",
-                                                 "Kesehatan", "Kapal Pesiar", "Logistik", "Marketing",
-                                                 "Media - Jurnalis", "Museum", "Marketing", "Menulis",
-                                                 "NGO", "Periklanan", "Parmasi", "Pelayanan Pelanggan",
-                                                 "Pendidikan", "Perencanaan Acara", "Pemerintah", "Pabrik",
-                                                 "Perencanaan Pernikahan", "Pameran dan Bazzar",
-                                                 "Pendidikan", "Penulis Konten ", "Programming", "Publisher",
-                                                 "Rumah Sakit", "Restoran", "Sales", "Sosial Media", "Startup",
-                                                 "Sukarelawan", "Sales dan Marketing", "Social Media Manager",
-                                                 "Travel"] %>
+        <%= f.input :main_category, input_html: {class: 'selection'}, collection: category %>
       </div>
 
       <div class="form-inputs">
-        <%= f.input :second_category, input_html: {class: 'selection'}, collection: ["Akunting dan keuangan", "Ambassador", "Animasi",
-                                                 "Arsitek", "Asuransi", "Bank", "Desain",
-                                                 "Desain Grafis", "Data Entry", "Designer",
-                                                 "Fashion", "Film", "Fotograf","Hotel",
-                                                 "Hubungan Internasional", "IT", "Komunikasi",
-                                                 "Komunitas ", "Komputer", "Konsultan", "Keuangan",
-                                                 "Kesehatan", "Kapal Pesiar", "Logistik", "Marketing",
-                                                 "Media - Jurnalis", "Museum", "Marketing", "Menulis",
-                                                 "NGO", "Periklanan", "Parmasi", "Pelayanan Pelanggan",
-                                                 "Pendidikan", "Perencanaan Acara", "Pemerintah", "Pabrik",
-                                                 "Perencanaan Pernikahan", "Pameran dan Bazzar",
-                                                 "Pendidikan", "Penulis Konten ", "Programming", "Publisher",
-                                                 "Rumah Sakit", "Restoran", "Sales", "Sosial Media", "Startup",
-                                                 "Sukarelawan", "Sales dan Marketing", "Social Media Manager",
-                                                 "Travel"] %>
+        <%= f.input :second_category, input_html: {class: 'selection'}, collection:  category %>
       </div>
 
       <div class="form-inputs">
