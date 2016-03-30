@@ -1,4 +1,4 @@
-class StudentsController <ApplicationController
+class StudentsController < ApplicationController
   before_action :only_current_student, only: [:show]
   before_action :authenticate_student!, only: [:your_apply, :your_accepted_job]
 
