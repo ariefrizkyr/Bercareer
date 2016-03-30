@@ -1,9 +1,15 @@
 class JobsController < ApplicationController
   before_action :find_job, only: [:show, :edit, :update]
-  before_action :authenticate_company!, except: [:index, :show]
+  before_action :authenticate_company!, except: [:index, :show, :search]
 
   def index
-    @jobs = Job.all.order("deadline ASC")
+    @search = Job.ransack(params[:q])
+    @jobs = @search.result.where(active: true).order("deadline ASC")
+  end
+
+  def search
+    index
+    render :index
   end
 
   def show
@@ -31,7 +37,7 @@ class JobsController < ApplicationController
   end
 
   def update
-    if @job.update
+    if @job.update_attributes(job_params)
       flash[:success] = "Job updated!"
       redirect_to @job
     else

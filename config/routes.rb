@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
   resources :jobs do
     resources :applies, only: [:create]
+    collection do
+      match 'search' => 'jobs#search', via: [:get, :post], as: :search
+    end
   end
 
 end
