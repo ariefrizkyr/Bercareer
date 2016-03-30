@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resource :resume, except: [:index, :show]
     resources :accepts, only: [:create]
     resources :feedbacks, except: [:index, :show]
+    collection do
+      match 'search' => 'students#search', via: [:get, :post], as: :search
+    end
   end
 
   resources :companies do

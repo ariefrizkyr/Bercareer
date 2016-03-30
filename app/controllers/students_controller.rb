@@ -3,7 +3,13 @@ class StudentsController < ApplicationController
   before_action :authenticate_student!, only: [:your_apply, :your_accepted_job]
 
   def index
-    @students = Student.includes(:resume)
+    @search = Student.ransack(params[:q])
+    @students = @search.result.includes(:resume)
+  end
+
+  def search
+    index
+    render :index
   end
 
   def show

@@ -1,5 +1,10 @@
 <script>
   $(document).ready(function() {
+    // GPA slider
+    $("#gpa-slider").change(function () {
+       var newValue = $('#gpa-slider').val();
+       $("#value").html(newValue);
+    });
     // selection
     $('.selection').each(function() {
       $(this).select2({
