@@ -4,6 +4,8 @@
       <%= f.search_field :resume_university_cont, placeholder: 'University' %><br>
       Minimum GPA: <%= f.label :resume_gpa_gteq, '...', id: 'value' %><br>
       <%= f.range_field :resume_gpa_gteq, in: 1..4, step: 0.1, id: 'gpa-slider', class: 'form-control' %><br>
+      <%= f.select :resume_city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %><br>
+      <%= f.select :resume_province, province, { include_blank: 'Province' }, class: 'selection form-control' %><br>
       <%= f.submit 'Search' %>
     <% end %>
   </div>
