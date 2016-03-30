@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   resources :companies do
     resource :profile, except: [:index, :show]
     resources :reviews, except: [:index, :show]
+    collection do
+      match 'search' => 'companies#search', via: [:get, :post], as: :search
+    end
   end
 
   resources :jobs do

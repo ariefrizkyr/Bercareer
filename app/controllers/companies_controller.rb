@@ -3,7 +3,13 @@ class CompaniesController <ApplicationController
   before_action :only_current_company, only: [:show]
 
   def index
-    @companies = Company.includes(:profile)
+    @search = Company.ransack(params[:q])
+    @companies = @search.result.includes(:profile)
+  end
+
+  def search
+    index
+    render :index
   end
 
   def show

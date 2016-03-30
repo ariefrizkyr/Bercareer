@@ -1,7 +1,21 @@
-<% @companies.each do |company| %>
-  <% if company.profile %>
-    <%= link_to company do %>
-      <%= company.company_name %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <%= search_form_for @search, url: search_companies_path, method: :post do |f| %>
+      <%= f.search_field :company_name_cont, placeholder: 'Company Name' %><br>
+      <%= f.search_field :profile_city_cont, placeholder: 'City' %><br>
+      <%= f.submit 'Search' %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <% @companies.each do |company| %>
+    <% if company.profile %>
+      <%= link_to company do %>
+        <%= company.company_name %><br>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
