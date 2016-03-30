@@ -16,9 +16,9 @@
     <hr>
     <%= render @company.reviews %><br>
     <% if current_student %>
-      <% if @company.students.where('student_id = ?', current_student.id).count > 0 %>
+      <% if @company.students.where('student_id = ?', current_student.id).present? %>
         <%= link_to 'Give review', new_company_review_path(@company) unless
-        Review.where(company_id: @company.id, student_id: current_student.id).count > 0 %>
+        Review.where(company_id: @company.id, student_id: current_student.id).present? %>
       <% end %>
     <% end %>
     <% if current_company %>
