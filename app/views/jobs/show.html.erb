@@ -21,7 +21,11 @@
 <%= @job.main_category %> <%= @job.second_category %><br><br>
 <% if current_student %>
   <% unless Apply.where(student_id: current_student.id, job_id: @job.id).count > 0 %>
-    <%= render 'applies/form' %>
+    <% if @job.deadline > Time.now || @job.active = false %>
+      <%= render 'applies/form' %>
+    <% else %>
+      Application closed.
+    <% end %>
   <% else %>
     You have applied to this job.
   <% end %>
