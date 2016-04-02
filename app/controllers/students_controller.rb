@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :only_current_student, only: [:show]
   before_action :authenticate_student!, only: [:your_apply, :your_accepted_job]
+  before_action :authenticate_company!, only: [:index, :show]
 
   def index
     @search = Student.ransack(params[:q])
@@ -29,10 +29,4 @@ class StudentsController < ApplicationController
   def your_accepted_job
     @accepts = current_student.accepts
   end
-
-  private
-    def only_current_student
-      @student = Student.find(params[:id])
-      @resume = @student.resume
-    end
 end
