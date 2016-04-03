@@ -4,7 +4,7 @@ class JobsController < ApplicationController
 
   def index
     @search = Job.ransack(params[:q])
-    @jobs = @search.result.where(active = true).order("deadline ASC")
+    @jobs = @search.result.where('active = true').order("deadline ASC")
   end
 
   def search
