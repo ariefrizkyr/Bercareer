@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
     end
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :nim, :email, :password, :password_confirmation, :company_name, :phone_number) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:full_name, :nim, :email, :password, :password_confirmation,:company_name, :phone_number) }
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :nim, :email, :password, :password_confirmation, :company_name, :phone_number) }
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :nim, :email, :password, :password_confirmation,:company_name, :phone_number) }
     end
 
     rescue_from ActiveRecord::RecordNotFound do

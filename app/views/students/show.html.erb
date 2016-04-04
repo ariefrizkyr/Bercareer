@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4">
     <%= image_tag @student.resume.photo.url(:medium), class: 'img-circle' %><br>
-    Name : <%= @student.full_name %><br>
+    Name : <%= @student.first_name %> <%= @student.last_name %><br>
     Gender : <%= @student.resume.gender %><br>
     Date of Birth : <%= @student.resume.birth_date.strftime("%B %d, %Y") %><br>
     Address : <%= @student.resume.address %><br>

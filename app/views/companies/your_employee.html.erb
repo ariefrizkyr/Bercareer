@@ -1,5 +1,5 @@
 <% @employees.each do |employee| %>
   <%= link_to employee.student do %>
-    <%= employee.student.full_name %> as <%= employee.job.job_title %><br>
+    <%= employee.student.first_name %>  <%= employee.student.last_name %> as <%= employee.job.job_title %><br>
   <% end %>
 <% end %>

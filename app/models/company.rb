@@ -11,14 +11,15 @@ class Company < ActiveRecord::Base
   has_many :students, through: :accepts
   has_many :feedbacks
   has_many :reviews
-  
+
   acts_as_messageable
 
   def mailboxer_email(object)
    return email
   end
 
-  validates :full_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :company_name, presence: true
   validates :phone_number, presence: true, numericality: true, uniqueness: true
 end

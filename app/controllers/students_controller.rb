@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :authenticate_student!, only: [:your_apply, :your_accepted_job]
-  before_action :authenticate_company!, only: [:index, :show]
+  before_action :authenticate_company!, only: [:index, :search]
 
   def index
     @search = Student.ransack(params[:q])
