@@ -19,7 +19,7 @@ class Student < ActiveRecord::Base
   end
 
   validates :first_name, presence: true
-  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :nim, presence: true, numericality: true, uniqueness: true
-  validates :email, presence: true, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be university email' }
+  validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be an university email (user@email.ac.id)' }
 end

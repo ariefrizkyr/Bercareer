@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -7,24 +7,41 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Bercareer', root_path, class: 'navbar-brand' %>
+      <%= link_to(root_path) do %>
+        <%= image_tag("logo.png", class: 'navbar-brand', style: 'width: 150px; height: 35px; border-radius: 0px; border: 1px none rgb(67, 159, 224);') %>
+      <% end %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-            <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'Internship', jobs_path %></li>
-            <li><%= link_to 'Journal', '#' %></li>
+        <% if current_page?(root_path) %>
+          <%= search_form_for @search, url: search_jobs_path, html: { method: :post, class: 'nav navbar-nav navbar-form navbar-left' } do |f| %>
+            <%= f.search_field :job_title_cont, id: 'search-form', placeholder: "Search jobs..." %>
+          <% end %>
+        <% end %>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Browse Jobs', jobs_path %></li>
+        <li><%= link_to 'Journal', '#' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_student %>
-            <li><%= link_to 'My Applications', your_applications_path %></li>
-            <li><%= link_to 'My Job', your_accepted_jobs_path %></li>
-            <li><%= link_to 'Message Center', conversations_path %></li>
-            <li><%= link_to 'Sign Out', destroy_student_session_path, method: :delete %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Hello, <%= current_student.first_name %> <%= current_student.last_name %>
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Edit Resume', edit_student_resume_path(current_student) %></li>
+                <li><%= link_to 'My Applications', your_applications_path %></li>
+                <li><%= link_to 'My Jobs', your_accepted_jobs_path %></li>
+                <li><%= link_to 'Message Center', conversations_path %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Account Setting', edit_student_registration_path %></li>
+                <li><%= link_to 'Sign Out', destroy_student_session_path, method: :delete %></li>
+              </ul>
+            </li>
           <% else %>
-            <li><%= link_to 'Employers', company_home_path %></li>
-            <li><%= link_to 'Sign In', new_student_session_path %></li>
-            <li><%= link_to 'Sign Up', new_student_registration_path %></li>
+            <li><%= link_to 'Sign In', new_student_session_path, class: 'btn btn-white' %></li>
+            <li><%= link_to 'Sign Up', new_student_registration_path, class: 'btn btn-green' %></li>
+            <li><%= link_to 'Employers?', company_home_path %></li>
           <% end %>
       </ul>
     </div><!--/.nav-collapse -->
