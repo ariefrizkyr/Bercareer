@@ -4,19 +4,19 @@
       <div class="row">
           <div class="col-md-4">
             <div class="form-group">
-              <%= f.search_field :job_title_cont, placeholder: 'Job Title', class: 'form-control' %>
+              <%= f.search_field :job_title_cont, placeholder: 'Job Title (Accountant, Programmer, etc)', class: 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="form-group">
-              <%= f.select :city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %><br>
+              <%= f.select :job_type_cont, ["Full Time", "Part Time", "Freelance", "Internship"], { include_blank: 'Job Type' }, class: 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="form-group">
-              <%= f.select :province_cont, province, { include_blank: 'Province' }, class: 'selection form-control' %>
+              <%= f.select :province_cont, province, { include_blank: 'Location' }, class: 'selection form-control' %><br>
             </div>
           </div>
       </div>
@@ -28,6 +28,7 @@
     <% end %>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <% @jobs.each do |job| %>
