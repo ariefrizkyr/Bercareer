@@ -1,41 +1,49 @@
-<h1>Job List</h1>
-<%= search_form_for @search, url: search_jobs_path, html: { method: :post } do |f| %>
-  <div class="row">
-      <div class="col-md-4 col-md-offset-2">
-        <div class="form-group">
-          <%= f.search_field :job_title_cont, placeholder: 'Job Title', class: 'form-control' %>
+<div class="container-fluid white-background padding-top padding-bottom margin-bottom">
+  <div class="container">
+    <%= search_form_for @search, url: search_jobs_path, html: { method: :post } do |f| %>
+      <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.search_field :job_title_cont, placeholder: 'Job Title', class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.select :city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %><br>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.select :province_cont, province, { include_blank: 'Province' }, class: 'selection form-control' %>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+          <%= f.submit 'Search Job', class: 'btn btn-lg btn-green' %>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <%= f.select :city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %><br>
-          <%= f.select :province_cont, province, { include_blank: 'Province' }, class: 'selection form-control' %>
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 text-center">
-      <%= f.submit 'Search Job', class: 'btn btn-success' %>
-    </div>
-  </div>
-<% end %>
-
-<hr>
-
-<div class="row">
-  <% @jobs.each do |job| %>
-    <%= job.job_title %> at <%= job.company.company_name %><br>
-    <%= job.job_type %><br>
-    <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %><br>
-    <%= job.short_desc %><br>
-    <% if job.is_paid == true %>
-      Paid<br>
-    <% else %>
-      No paid<br>
     <% end %>
-    Application Dificulties: <%= job.difficulties %><br>
-    <%= job.urgency %><br>
-    <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
-    <%= link_to 'View Job', job, class: 'btn btn-primary' %><br>
-  <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @jobs.each do |job| %>
+      <%= job.job_title %> at <%= job.company.company_name %><br>
+      <%= job.job_type %><br>
+      <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %><br>
+      <%= job.short_desc %><br>
+      <% if job.is_paid == true %>
+        Paid<br>
+      <% else %>
+        No paid<br>
+      <% end %>
+      Application Dificulties: <%= job.difficulties %><br>
+      <%= job.urgency %><br>
+      <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
+      <%= link_to 'View Job', job, class: 'btn btn-primary' %><br>
+    <% end %>
+  </div>
 </div>
