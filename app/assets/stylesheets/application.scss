@@ -103,6 +103,20 @@ body {
   margin-bottom: 50px;
 }
 
+.small-gap {
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
+}
+
+.medium-gap {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.large-gap {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
 
 /*------------------------------------------*/
 /*   Typography
@@ -111,6 +125,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: $gray;
+}
+
+.small {
+  font-size: 14px;
 }
 
 /*------------------------------------------*/
@@ -300,6 +318,58 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+/*------------------------------------------*/
+/*   Labels
+/*------------------------------------------*/
+
+.label-green {
+  background-color: $green;
+}
+
+.label-yellow {
+  background-color: $yellow;
+}
+
+.label-red {
+  background-color: $red;
+}
+
+.label-blue {
+  background-color: $blue;
+}
+
+/* Label for job type */
+
+.label-fulltime {
+  background-color: $blue;
+}
+
+.label-parttime {
+  background-color: $yellow;
+}
+
+.label-freelance {
+  background-color: $red;
+}
+
+.label-internship {
+  background-color: $green;
+}
+
+/* Label for job urgency */
+
+.label-noturgent {
+  background-color: $green;
+}
+
+.label-urgent {
+  background-color: $yellow;
+}
+
+.label-reallyurgent {
+  background-color: $red;
 }
 
 /*------------------------------------------*/

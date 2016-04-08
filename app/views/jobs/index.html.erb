@@ -32,19 +32,43 @@
 <div class="container">
   <div class="row">
     <% @jobs.each do |job| %>
-      <%= job.job_title %> at <%= job.company.company_name %><br>
-      <%= job.job_type %><br>
-      <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %><br>
-      <%= job.short_desc %><br>
-      <% if job.is_paid == true %>
-        Paid<br>
-      <% else %>
-        No paid<br>
-      <% end %>
-      Application Dificulties: <%= job.difficulties %><br>
-      <%= job.urgency %><br>
-      <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
-      <%= link_to 'View Job', job, class: 'btn btn-primary' %><br>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <%= image_tag job.company.profile.logo.url(:medium) %>
+            <h4><%= job.job_title %></h4>
+            <h5><%= job.company.company_name %></h5>
+          </div>
+
+          <div class="panel-body">
+            <div class="col-sm-4 text-center">
+            <label class="label label-<%= job.job_type.delete(' ').downcase %>"><%= job.job_type %></label>
+            </div>
+
+            <div class="col-sm-4 text-center">
+              <label class="label label-<%= job.urgency.delete(' ').downcase %>"><%= job.urgency %></label>
+            </div>
+
+            <div class="col-sm-4 text-center">
+              <% if job.is_paid == true %>
+                <label class="label label-green">Paid</label>
+              <% else %>
+                <label class="label label-blue">No paid</label>
+              <% end %>
+            </div>
+
+            <div class="medium-gap"></div>
+
+            <div class="col-sm-12">
+              <p class="small text-center"><strong><%= job.city %>, <%= job.province %></strong></p>
+              <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %></p>
+              <p class="small"><strong>Dificulties:</strong> <%= job.difficulties %> Application</p>
+              <p class="small"><strong>Deadline:</strong> <%= job.deadline.strftime("%d %B %Y at %H:%M") %></p>
+              <%= link_to 'View Job Details', job, class: 'btn btn-block btn-green' %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

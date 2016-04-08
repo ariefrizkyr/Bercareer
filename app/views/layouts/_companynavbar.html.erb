@@ -24,8 +24,9 @@
             Hello, <%= current_company.first_name %> <%= current_company.last_name %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'View Applicants', your_applicants_path %></li>
-              <li><%= link_to 'View Hired List', your_employee_path %></li>
+              <li><%= link_to 'Jobs List', your_jobs_path %></li>
+              <li><%= link_to 'Applicants List', your_applicants_path %></li>
+              <li><%= link_to 'Hired List', your_employee_path %></li>
               <li><%= link_to 'Message Center', conversations_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Account Setting', edit_company_registration_path %></li>
