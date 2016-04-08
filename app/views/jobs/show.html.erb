@@ -1,38 +1,182 @@
-<%= @job.job_title %> at <%= @job.company.company_name %><br>
-<%= @job.job_type %><br>
-<%= @job.start_period.strftime("%B %Y") %> - <%= @job.start_period.strftime("%B %Y") %><br>
-<%= @job.short_desc %><br>
-<%= @job.job_desc %><br>
-<%= @job.requirement %><br>
-<% if @job.is_paid == true %>
-  Paid<br>
-  IDR<%= @job.salary %> <%= @job.salary_interval %><br>
-<% else %>
-  No paid<br>
-<% end %>
-<%= @job.difficulties %><br>
-<%= @job.urgency %><br>
-<%= @job.address %><br>
-<%= @job.city %><br>
-<%= @job.province %><br>
-<%= @job.country %><br>
-<%= @job.start_work.strftime("%H:%M") %> - <%= @job.end_work.strftime("%H:%M") %><br>
-<%= @job.deadline.strftime("%d %B %Y at %H:%M") %><br>
-<%= @job.main_category %> <%= @job.second_category %><br><br>
-<% if current_student %>
-  <% unless Apply.where(student_id: current_student.id, job_id: @job.id).count > 0 %>
-    <% if @job.deadline > Time.now || @job.active = false %>
-      <%= render 'applies/form' %>
-    <% else %>
-      Application closed.
-    <% end %>
-  <% else %>
-    You have applied to this job.
-  <% end %>
-<% end %>
+<div class="container margin-top margin-bottom">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <%= image_tag @job.company.profile.logo.url(:medium) %>
+          <h4><%= @job.job_title %></h4>
+          <h5><%= @job.company.company_name %></h5>
+        </div>
 
-<% if current_company %>
-  <% if @job.company_id == current_company.id %>
-    <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('map-marker', class: 'strong fa-3x') %>
+            </div>
+
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Location</h4>
+              <%= @job.city %>, <%= @job.province %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('bars', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Job Category</h4>
+              <%= @job.main_category %>
+              <% if @job.second_category.present? %>
+                | <%= @job.second_category %>
+              <% end %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('briefcase', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Job Status</h4>
+              <%= @job.job_type %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('usd', class: 'fa-3x') %>
+            </div>
+
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Salary</h4>
+              <% if @job.is_paid == true %>
+                IDR <%= @job.salary %> <%= @job.salary_interval %>
+              <% else %>
+                No salary
+              <% end %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('exclamation-circle', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Urgency</h4>
+              <%= @job.urgency %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('tasks', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Difficulties</h4>
+              <%= @job.difficulties %> Application
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('clock-o', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Working Period</h4>
+              <%= @job.start_period.strftime("%B %Y") %> - <%= @job.start_period.strftime("%B %Y") %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('calendar-times-o', class:'fa-3x') %>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1">
+              <h4 class="media-heading">Application Deadline</h4>
+              <%= @job.deadline.strftime("%d %B %Y at %H:%M") %>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer text-center">
+          <% if current_student %>
+            <% unless Apply.where(student_id: current_student.id, job_id: @job.id).count > 0 %>
+              <% if @job.deadline > Time.now || @job.active = false %>
+                <%= render 'applies/form' %>
+              <% else %>
+                <h4>Application closed.</h4>
+              <% end %>
+            <% else %>
+              <h4>You have applied to this job.</h4>
+            <% end %>
+          <% else %>
+            <h4>Sign up to apply. <%= link_to 'Click here', new_student_registration_path %>.</h4>
+            <h5>Already signed up? <%= link_to 'Sign in here', new_student_session_path %>.</h5>
+          <% end %>
+
+          <% if current_company %>
+            <% if @job.company_id == current_company.id %>
+              <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Job Overview</h3>
+          <%= @job.short_desc %>
+          <br>
+          <br>
+          <p><strong>Working hour:</strong> <%= @job.start_work.strftime("%H:%M") %> - <%= @job.end_work.strftime("%H:%M") %></p>
+          <p><strong>Office location:</strong> <%= @job.address %><br>
+          <%= @job.city %>, <%= @job.province %><br>
+          <%= @job.country %></p>
+          <hr>
+
+          <h3>Job Description</h3>
+          <%= @job.job_desc %>
+
+          <hr>
+
+          <h3>Requirements</h3>
+          <%= @job.requirement %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>About the Company</h3>
+          <strong>Description:</strong> <%= @job.company.profile.description %>
+          <hr>
+          <strong>Headquarters:</strong> <%= @job.company.profile.address %><br>
+          <%= @job.company.profile.city %>, <%= @job.company.profile.province %><br>
+          <%= @job.company.profile.country %>
+          <hr>
+          <strong>Industry:</strong> <%= @job.company.profile.field %>
+          <% if @job.company.profile.website.present? %>
+            <hr>
+            <strong>Company Website:</strong> <%= link_to @job.company.profile.website, @job.company.profile.website %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

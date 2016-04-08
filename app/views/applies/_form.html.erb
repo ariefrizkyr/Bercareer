@@ -1,4 +1,4 @@
 <%= simple_form_for([@job, @job.applies.new]) do |f| %>
   <%= f.hidden_field :job_id, value: @job.id %>
-  <%= f.button :submit, class: 'btn btn-success' %>
+  <%= f.button :submit, 'Apply Now', class: 'btn btn-lg btn-green' %>
 <% end %>
