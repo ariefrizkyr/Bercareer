@@ -1,8 +1,43 @@
-<div class="row">
-  <% @applies.each do |apply| %>
-    <div class="row">
-      <%= apply.job.job_title %> at <%= apply.job.company.company_name %><br>
-      <%= link_to 'View Job Detail', apply.job, class: 'btn btn-primary' %>
+<% provide(:title, "My Application List") %>
+
+<div class="container margin-top margin-bottom">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h2>Application List</h2>
+        </div>
+
+        <div class="panel-body">
+          <% @applies.each do |apply| %>
+            <div class="row">
+              <div class="col-sm-3">
+                <%= image_tag apply.job.company.profile.logo.url(:small) %>
+              </div>
+
+              <div class="col-sm-8">
+                <strong><%= apply.job.job_title %> at <%= apply.job.company.company_name %></strong>
+                <br>
+                <label class="label label-<%= apply.job.job_type.delete(' ').downcase %>"><%= apply.job.job_type %></label> |
+                <label class="label label-<%= apply.job.urgency.delete(' ').downcase %>"><%= apply.job.urgency %></label> |
+                <% if apply.job.is_paid == true %>
+                  <label class="label label-green">Paid</label>
+                <% else %>
+                  <label class="label label-blue">No paid</label>
+                <% end %>
+                <div class="small-gap"></div>
+                <%= link_to 'Job Details', apply.job, class: 'btn btn-green' %>
+                <%= link_to 'Send Message', new_message_path(to: apply.job.company.id), class: 'btn btn-yellow' %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+
+    <div class="col-md-4">
+      <%= render 'layouts/studentsidebar' %>
+    </div>
+  </div>
 </div>

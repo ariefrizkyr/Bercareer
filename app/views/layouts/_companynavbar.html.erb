@@ -29,6 +29,11 @@
             Hello, <%= current_company.first_name %> <%= current_company.last_name %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <% if current_company.profile %>
+                <li><%= link_to 'Edit Profile', edit_company_profile_path(current_company) %></li>
+              <% else %>
+                <li><%= link_to 'Create Profile', new_company_profile_path(current_company) %></li>
+              <% end %>
               <li><%= link_to 'Jobs List', your_jobs_path %></li>
               <li><%= link_to 'Applicants List', your_applicants_path %></li>
               <li><%= link_to 'Hired List', your_employee_path %></li>

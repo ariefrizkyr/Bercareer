@@ -1,8 +1,42 @@
-<div class="row">
-  <% @accepts.each do |accept| %>
-    <div class="row">
-      <%= accept.job.job_title %> at <%= accept.company.company_name %><br>
-      <%= link_to 'View Job Detail', accept.job, class: 'btn btn-primary' %>
+<% provide(:title, "My Accepted Jobs") %>
+
+<div class="container margin-top margin-bottom">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h2>Job List</h2>
+        </div>
+        <div class="panel-body">
+          <% @accepts.each do |accept| %>
+          <div class="row">
+            <div class="col-sm-3">
+              <%= image_tag accept.job.company.profile.logo.url(:small) %>
+            </div>
+
+            <div class="col-sm-8">
+              <strong><%= accept.job.job_title %> at <%= accept.job.company.company_name %></strong>
+              <br>
+              <label class="label label-<%= accept.job.job_type.delete(' ').downcase %>"><%= accept.job.job_type %></label> |
+              <label class="label label-<%= accept.job.urgency.delete(' ').downcase %>"><%= accept.job.urgency %></label> |
+              <% if accept.job.is_paid == true %>
+                <label class="label label-green">Paid</label>
+              <% else %>
+                <label class="label label-blue">No paid</label>
+              <% end %>
+              <div class="small-gap"></div>
+              <%= link_to 'Job Details', accept.job, class: 'btn btn-green' %>
+              <%= link_to 'Send Message', new_message_path(to: accept.job.company.id), class: 'btn btn-yellow' %>
+            </div>
+          </div>
+          <hr>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+
+    <div class="col-md-4">
+      <%= render 'layouts/studentsidebar' %>
+    </div>
+  </div>
 </div>
