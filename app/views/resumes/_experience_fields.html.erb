@@ -1,16 +1,54 @@
 <div class="nested-fields">
-  <%= f.input :company_name %>
-  <%= f.input :position %>
-  <%= f.input :start_work, as: :date, start_year: Date.today.year - 20,
-                                      end_year: Date.today.year, ignore_day: true,
-                                      order: [:month, :year] %>
-  <%= f.input :is_current, input_html: {class: 'current'} %>
-  <%= f.input :end_work, input_html: {class: 'end_work'}, as: :date, start_year: Date.today.year - 20,
-                                      end_year: Date.today.year, ignore_day: true,
-                                      order: [:month, :year] %>
-  <%= f.input :description %>
-  <%= link_to_remove_association 'Remove', f, class: 'form-button btn btn-default' %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.input :company_name, input_html: { class: 'form-control' } %>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.input :position, input_html: { class: 'form-control' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.input :start_work, as: :date, start_year: Date.today.year - 20,
+                                            end_year: Date.today.year, ignore_day: true,
+                                            order: [:month, :year],
+                                            input_html: { class: 'form-control' },
+                                            label: 'Start work period' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.input :is_current, label: 'Currently work here', input_html: { class: 'current' } %>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.input :end_work, input_html: {class: 'end_work'}, as: :date, start_year: Date.today.year - 20,
+                                            end_year: Date.today.year, ignore_day: true,
+                                            order: [:month, :year],
+                                            input_html: { class: 'form-control' },
+                                            label: 'End work period' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.input :description, as: :text, input_html: { rows: 4, class: 'no-resize' } %>
+    </div>
+  </div>
+  <%= link_to_remove_association 'Remove', f, class: 'form-button btn btn-red' %>
 </div>
+
+<hr>
 
 <script>
   $(document).ready(function() {

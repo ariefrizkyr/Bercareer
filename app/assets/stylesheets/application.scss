@@ -191,6 +191,23 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.sidebar-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid $gray-lighter;
+  a {
+    color: $gray-light;
+    &:hover, &:focus {
+      color: $green;
+      text-decoration: none;
+    }
+  }
+}
 /*------------------------------------------*/
 /*   Forms
 /*------------------------------------------*/
@@ -216,6 +233,10 @@ h1, h2, h3, h4, h5, h6 {
       border-color: $gray-lighter;
       box-shadow: none;
   }
+}
+
+.no-resize {
+  resize: none;
 }
 
 #search-form {

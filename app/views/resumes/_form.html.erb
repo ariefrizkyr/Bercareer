@@ -1,123 +1,220 @@
 <%= simple_form_for(@resume, url: student_resume_path, html: { multipart: true }) do |f| %>
   <div class="row">
-    <div class="col-md-4">
-      <h3>Personal Information</h3>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Personal Information</h3>
+        </div>
 
-      <div class="form-inputs">
-        <%= f.input :photo %>
-      </div>
-      <div class="form-inputs">
-        <%= f.input :gender, collection: ["Male", "Female"] %>
-      </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :photo, input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :birth_date, as: :date, start_year: Date.today.year - 30,
-                                 end_year: Date.today.year - 15,
-                                 order: [:day, :month, :year], label: 'Date of Birth' %>
-      </div>
+          <hr>
 
-      <div class="form-inputs">
-        <%= f.input :address %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :birth_date, as: :date, start_year: Date.today.year - 30,
+                                         end_year: Date.today.year - 15,
+                                         order: [:day, :month, :year], label: 'Date of Birth',
+                                         input_html: { class: 'form-control' } %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :city, collection: city, input_html: { class: 'selection' } %>
-      </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :gender, collection: ["Male", "Female"], input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :province, collection: province, input_html: { class: 'selection' } %>
-      </div>
+          <hr>
 
-      <div class="form-inputs">
-        <%= f.input :country, collection: ["Indonesia"] %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :address, input_html: { rows: 6, class: 'form-control no-resize' } %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :postal_code %>
-      </div>
-    </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :city, collection: city, input_html: { class: 'selection form-control' } %>
+              </div>
 
-    <div class="col-md-4">
-      <h3>Education</h3>
+              <div class="form-group">
+                <%= f.input :province, collection: province, input_html: { class: 'selection form-control' } %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :university, input_html: { class: 'selection' }, collection: university %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :country, collection: ["Indonesia"] %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :major, input_html: { class: 'selection' }, collection: study_program %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :level, collection: ["D1", "D2", "D3", "S1"] %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :grad_year, as: :date, start_year: Date.today.year, end_year: Date.today.year + 10,
-                                           ignore_day: true, ignore_month: true, order: [:year] %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :gpa, input_html: { min: 1.0, max: 4.0} %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :skill_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'skills').uniq.pluck(:name) %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :language_list, input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'languages').uniq.pluck(:name) %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <h3>Work Experiences</h3>
-
-      <div class="form-inputs">
-        <%= f.simple_fields_for :experiences do |exp| %>
-          <%= render 'experience_fields', f: exp %>
-        <% end %>
-        <br>
-        <%= link_to_add_association 'Add Experience', f, :experiences, class: 'btn btn-default' %>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :postal_code %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Education</h3>
+        </div>
 
-      <h3>Portfolios</h3>
-      <div class="form-inputs">
-        <%= f.simple_fields_for :portfolios do |exp| %>
-          <%= render 'portfolio_fields', f: exp %>
-        <% end %>
-        <br>
-        <%= link_to_add_association 'Add Portfolio', f, :portfolios, class: 'btn btn-default' %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :university, input_html: { class: 'selection form-control' }, collection: university %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :major, input_html: { class: 'selection form-control' }, collection: study_program %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= f.input :level, collection: ["D1", "D2", "D3", "S1"], input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= f.input :grad_year, as: :date, start_year: Date.today.year, end_year: Date.today.year + 10,
+                                                   ignore_day: true, ignore_month: true, order: [:year],
+                                                   input_html: { class: 'form-control', style: 'width: 100%;' },
+                                                   label: 'Graduation year (Expected)' %>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= f.input :gpa, input_html: { min: 1.0, max: 4.0}, input_html: { class: 'form-control' }, label: 'GPA' %>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :skill_list, label: 'Skills', input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'skills').uniq.pluck(:name) %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :language_list, label: 'Languages', input_html: { class: 'taggable', multiple: "multiple" }, collection: ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'languages').uniq.pluck(:name) %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Work Experiences</h3>
+        </div>
 
-      <h3>Social Media Accounts</h3>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.simple_fields_for :experiences do |exp| %>
+                  <%= render 'experience_fields', f: exp %>
+                <% end %>
+                <br>
+                <%= link_to_add_association 'Add Experience', f, :experiences, class: 'btn btn-green' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :facebook_url %>
+        </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :twitter_url %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Portfolios</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.simple_fields_for :portfolios do |exp| %>
+                  <%= render 'portfolio_fields', f: exp %>
+                <% end %>
+
+                <%= link_to_add_association 'Add Portfolio', f, :portfolios, class: 'btn btn-green' %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :linkedin_url %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Social Media Accounts</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :facebook_url, label: 'Facebook URL', input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :twitter_url, label: 'Twitter URL', input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :linkedin_url, label: 'LinkedIn URL', input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :googleplus_url, label: 'Google+ URL', input_html: { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :googleplus_url %>
+      <div class="actions text-center">
+        <%= f.button :submit, class: 'btn btn-lg btn-green' %>
       </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="actions text-center">
-      <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

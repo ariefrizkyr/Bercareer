@@ -2,9 +2,9 @@
 
 <div class="container margin-top margin-bottom">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 text-center">
+    <div class="col-md-8">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading text-center">
           <h2>Edit Account</h2>
         </div>
 
@@ -44,12 +44,15 @@
               <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current Password (we need your password to change your details)', class: 'form-control' %>
             </div>
 
-            <div class="actions">
+            <div class="actions text-center">
               <%= f.submit "Update", class: 'btn btn-lg btn-green' %>
             </div>
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <%= render 'layouts/studentsidebar' %>
     </div>
   </div>
 </div>
