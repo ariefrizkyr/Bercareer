@@ -16,7 +16,7 @@
 
           <div class="col-md-4">
             <div class="form-group">
-              <%= f.select :province_cont, province, { include_blank: 'Location' }, class: 'selection form-control' %><br>
+              <%= f.select :province_cont, province, { include_blank: 'Location' }, class: 'selection form-control' %>
             </div>
           </div>
       </div>
@@ -64,7 +64,7 @@
               <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %></p>
               <p class="small"><strong>Dificulties:</strong> <%= job.difficulties %> Application</p>
               <p class="small"><strong>Deadline:</strong> <%= job.deadline.strftime("%d %B %Y at %H:%M") %></p>
-              <%= link_to 'View Job Details', job, class: 'btn btn-block btn-green' %>
+              <%= link_to 'Job Details', job, class: 'btn btn-block btn-green' %>
             </div>
           </div>
         </div>
