@@ -10,6 +10,7 @@
       <% else %>
         <li><%= link_to 'Create Profile', new_company_profile_path(current_company) %></li>
       <% end %>
+      <li class="sidebar-item"><%= link_to 'Create Job', new_job_path %></li>
       <li class="sidebar-item"><%= link_to 'Jobs List', your_jobs_path %></li>
       <li class="sidebar-item"><%= link_to 'Applicant List', your_applicants_path %></li>
       <li class="sidebar-item"><%= link_to 'Hired List', your_employee_path %></li>
