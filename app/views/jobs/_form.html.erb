@@ -1,110 +1,219 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= simple_form_for @job do |f| %>
-      <div class="form-inputs">
-        <%= f.input :job_title %>
-      </div>
+<%= simple_form_for @job do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>General Information</h3>
+        </div>
 
-      <div class="form-inputs">
-        <%= f.input :job_type, collection: ["Full Time", "Part Time", "Freelance", "Internship"] %>
-      </div>
+        <div class="panel-body">
 
-      <div class="form-inputs">
-        <%= f.input :address %>
-      </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :job_title %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :city, collection: city, input_html: { class: 'selection' } %>
-      </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :job_type, collection: ["Full Time", "Part Time", "Freelance", "Internship"] %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :province, collection: province, input_html: { class: 'selection' } %>
-      </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :deadline, minute_step: 15, ignore_second: true, label: 'Application deadline' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :country, collection: ["Indonesia"] %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :urgency, collection: ["Not urgent", "Urgent",
+                                                   "Really Urgent"] %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :short_desc %>
-      </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :difficulties, collection: ["Easy", "Intermediate",
+                                                         "Strict"],
+                                           label: 'Application difficulties' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :job_desc %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :main_category, input_html: {class: 'selection'}, collection: category,
+                                            label: 'Main job category' %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :requirement %>
-      </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :second_category, input_html: {class: 'selection'}, collection: category,
+                                            label: 'Second job category' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :benefit %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :is_paid, input_html: {class: 'paid', checked: true}  %>
-      </div>
-
-      <div class="form-inputs">
-        <div class="input-group">
-          <div class="input-group-addon">IDR</div>
-          <%= f.input :salary, input_html: {class: 'salary'} %>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :active, label: 'This job is active (open for application)', input_html: {checked: true} %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :salary_interval, collection: ["Per Hour", "Per Day", "Per Month"], input_html: {class: 'salary'} %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Working Location</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :address, input_html: { rows: 10, class: 'form-control no-resize' } %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :city, collection: city, input_html: { class: 'selection form-control' } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.input :province, collection: province, input_html: { class: 'selection form-control' } %>
+              </div>
+
+              <div class="form-group">
+                <%= f.input :country, collection: ["Indonesia"] %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :start_period, as: :date, start_year: Date.today.year,
-                                            end_year: Date.today.year + 5, ignore_day: true,
-                                            order: [:month, :year] %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Job Details</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :short_desc, input_html: { rows: 6, class: 'form-control no-resize' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :job_desc, input_html: { rows: 6, class: 'form-control no-resize' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :requirement, input_html: { rows: 6, class: 'form-control no-resize' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <%= f.input :benefit, input_html: { rows: 6, class: 'form-control no-resize' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= f.input :is_paid, label: 'This job is paid job', input_html: {class: 'paid', checked: true}  %>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Salary amount</label>
+                <div class="input-group">
+                  <div class="input-group-addon">IDR</div>
+                  <%= f.input :salary, input_html: {class: 'salary'}, placeholder: 'eg. 50000', label: false %>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= f.input :salary_interval, collection: ["Per Hour", "Per Day", "Per Month"], input_html: {class: 'salary'} %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :end_period, as: :date, start_year: Date.today.year,
-                                            end_year: Date.today.year + 5, ignore_day: true,
-                                            order: [:month, :year] %>
-      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Working Period</h3>
+        </div>
 
-      <div class="form-inputs">
-        <%= f.input :start_work, minute_step: 15 %>
-      </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :start_period, as: :date, start_year: Date.today.year,
+                                                    end_year: Date.today.year + 5, ignore_day: true,
+                                                    order: [:month, :year],
+                                                    label: 'Start working period' %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :end_work, minute_step: 15 %>
-      </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :end_period, as: :date, start_year: Date.today.year,
+                                                    end_year: Date.today.year + 5, ignore_day: true,
+                                                    order: [:month, :year],
+                                                    label: 'End working period' %>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-inputs">
-        <%= f.input :deadline, minute_step: 15, ignore_second: true %>
-      </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :start_work, minute_step: 15, label: 'Start working hour' %>
+              </div>
+            </div>
 
-      <div class="form-inputs">
-        <%= f.input :urgency, collection: ["Not urgent", "Urgent",
-                                           "Really Urgent"] %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :difficulties, collection: ["Easy", "Intermediate",
-                                                 "Strict"] %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :main_category, input_html: {class: 'selection'}, collection: category %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :second_category, input_html: {class: 'selection'}, collection:  category %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.input :active, input_html: {checked: true} %>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.input :end_work, minute_step: 15, label: 'End working hour' %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="actions text-center">
-        <%= f.button :submit, class: 'btn btn-primary' %>
+        <%= f.button :submit, class: 'btn btn-lg btn-green' %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
