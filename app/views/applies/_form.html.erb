@@ -1,4 +1,5 @@
 <%= simple_form_for([@job, @job.applies.new]) do |f| %>
   <%= f.hidden_field :job_id, value: @job.id %>
-  <%= f.button :submit, 'Apply Now', class: 'btn btn-lg btn-green' %>
+  <%= f.button :submit, 'Apply Now', class: 'btn btn-lg btn-green',
+  data: { confirm: 'You are about to apply for this job. Are you sure?' } %>
 <% end %>

@@ -1,19 +1,48 @@
-<h1>Your Jobs</h1>
-<div class="row">
-  <% @jobs.each do |job| %>
-    <%= job.job_title %> at <%= job.company.company_name %><br>
-    <%= job.job_type %><br>
-    <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %><br>
-    <%= job.short_desc %><br>
-    <% if job.is_paid == true %>
-      Paid<br>
-    <% else %>
-      No paid<br>
-    <% end %>
-    Application Dificulties: <%= job.difficulties %><br>
-    <%= job.urgency %><br>
-    <%= job.deadline.strftime("%d %B %Y at %H:%M") %><br>
-    <%= link_to 'View Job', job, class: 'btn btn-primary' %>
-    <%= link_to 'Edit Job', edit_job_path(job), class: 'btn btn-success' %><br>
-  <% end %>
+<% provide(:title, "Job List") %>
+
+<div class="container margin-top margin-bottom">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h2>Job List</h2>
+        </div>
+
+        <div class="panel-body">
+          <% @jobs.each do |job| %>
+            <div class="row">
+              <div class="col-sm-3">
+                <%= image_tag job.company.profile.logo.url(:small) %>
+              </div>
+
+              <div class="col-sm-9">
+                <strong><%= job.job_title %></strong>
+                <br>
+                <label class="label label-<%= job.job_type.delete(' ').downcase %>"><%= job.job_type %></label> |
+                <label class="label label-<%= job.urgency.delete(' ').downcase %>"><%= job.urgency %></label> |
+                <% if job.is_paid == true %>
+                  <label class="label label-green">Paid</label>
+                <% else %>
+                  <label class="label label-blue">No paid</label>
+                <% end %>
+                <div class="small-gap"></div>
+
+                <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %>
+                <br>
+                <strong>Deadline:</strong> <%= job.deadline.strftime("%d %B %Y at %H:%M") %></p>
+
+                <%= link_to 'Edit Job', edit_job_path(job), class: 'btn btn-green' %>
+                <%= link_to 'Job Details', job, class: 'btn btn-blue' %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <%= render 'layouts/companysidebar' %>
+    </div>
+  </div>
 </div>

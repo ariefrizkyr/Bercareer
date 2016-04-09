@@ -126,15 +126,13 @@
             <% else %>
               <h4>You have applied to this job.</h4>
             <% end %>
+          <% elsif current_company %>
+            <% if @job.company_id == current_company.id %>
+              <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-lg btn-green' %>
+            <% end %>
           <% else %>
             <h4>Sign up to apply. <%= link_to 'Click here', new_student_registration_path %>.</h4>
             <h5>Already signed up? <%= link_to 'Sign in here', new_student_session_path %>.</h5>
-          <% end %>
-
-          <% if current_company %>
-            <% if @job.company_id == current_company.id %>
-              <%= link_to 'Edit Job', edit_job_path, class: 'btn btn-primary' %>
-            <% end %>
           <% end %>
         </div>
       </div>

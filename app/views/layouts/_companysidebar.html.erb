@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+    <h2>Menu</h2>
+  </div>
+
+  <div class="panel-body">
+    <ul class="sidebar-list">
+      <% if current_company.profile %>
+        <li class="sidebar-item"><%= link_to 'Edit Profile', edit_company_profile_path(current_company) %></li>
+      <% else %>
+        <li><%= link_to 'Create Profile', new_company_profile_path(current_company) %></li>
+      <% end %>
+      <li class="sidebar-item"><%= link_to 'Jobs List', your_jobs_path %></li>
+      <li class="sidebar-item"><%= link_to 'Applicant List', your_applicants_path %></li>
+      <li class="sidebar-item"><%= link_to 'Hired List', your_employee_path %></li>
+      <li class="sidebar-item"><%= link_to 'Message Center', conversations_path %></li>
+      <li class="sidebar-item"><%= link_to 'Account Setting', edit_company_registration_path %></li>
+      <li class="sidebar-item"><%= link_to 'Sign Out', destroy_company_session_path, method: :delete %></li>
+    </ul>
+  </div>
+</div>
