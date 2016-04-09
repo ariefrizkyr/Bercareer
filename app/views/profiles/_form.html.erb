@@ -1,44 +1,40 @@
 <%= simple_form_for(@profile, url: company_profile_path, html: { multipart: true }) do |f| %>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h3>Company Information</h3>
-
-      <div class="form-inputs">
-        <%= f.input :logo %>
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.input :logo, input_html: { class: 'form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :address %>
+      <div class="form-group">
+        <%= f.input :address, input_html: { rows: 5, class: 'no-resize form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :city, collection: city, input_html: { class: 'selection' } %>
+      <div class="form-group">
+        <%= f.input :city, collection: city, input_html: { class: 'selection form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :province, collection: province, input_html: { class: 'selection' } %>
+      <div class="form-group">
+        <%= f.input :province, collection: province, input_html: { class: 'selection form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :country, collection: ["Indonesia"] %>
+      <div class="form-group">
+        <%= f.input :country, collection: ["Indonesia"], input_html: { class: 'form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :website %>
+      <div class="form-group">
+        <%= f.input :website, input_html: { class: 'form-control' }, label: 'Company URL', placeholder: 'Starts with http://' %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :field, collection: field, input_html: { class: 'selection' } %>
+      <div class="form-group">
+        <%= f.input :field, collection: field, input_html: { class: 'selection form-control' } %>
       </div>
 
-      <div class="form-inputs">
-        <%= f.input :description %>
+      <div class="form-group">
+        <%= f.input :description, label: 'Company Description', input_html: { class: 'form-control' }, input_html: { rows: 5, class: 'no-resize form-control' } %>
       </div>
 
       <div class="actions text-center">
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      </div>
-
+        <%= f.button :submit, class: 'btn btn-lg btn-success' %>
       </div>
     </div>
   </div>
