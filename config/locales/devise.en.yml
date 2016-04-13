@@ -18,13 +18,13 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "[Bercareer] Confirm Your Account"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "[Bercareer] Reset Password Instructions"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "[Bercareer] Unlock Instructions"
       password_change:
-        subject: "Password Changed"
+        subject: "[Bercareer] Password Changed"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
