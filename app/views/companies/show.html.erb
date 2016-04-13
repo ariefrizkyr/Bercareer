@@ -31,7 +31,7 @@
         <div class="row">
           <div class="col-sm-12">
             <h4 class="media-heading">About:</h4>
-            <%= @company.profile.description %>
+            <%= simple_format(@company.profile.description) %>
           </div>
         </div>
         <hr>

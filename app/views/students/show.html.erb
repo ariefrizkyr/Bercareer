@@ -102,6 +102,11 @@
         </div>
 
         <div class="panel-body">
+          <h4><strong>About me:</strong></h4>
+          <%= simple_format(@student.resume.description) %>
+
+          <hr>
+
           <h4><strong>Education:</strong></h4>
           <strong>University:</strong> <%= @student.resume.university %><br>
           <strong>Major:</strong> <%= @student.resume.major %><br>
