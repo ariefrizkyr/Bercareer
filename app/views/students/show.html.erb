@@ -154,8 +154,9 @@
               <% @student.resume.portfolios.each do |port| %>
                 <div class="col-sm-6">
                   <strong>Portfolio Name:</strong> <%= port.title %><br>
-                  <strong>Description:</strong> <%= port.description %><br>
-                  <strong>URL:</strong> <%= link_to port.link do %><%= port.link %><% end %>
+                  <strong>URL:</strong> <%= link_to port.link do %><%= port.link %><% end %><br>
+                  <strong>Description:</strong><br>
+                  <%= simple_format(port.description) %>
                 </div>
               <% end %>
             </div>
