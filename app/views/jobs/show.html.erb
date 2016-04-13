@@ -179,6 +179,9 @@
             <hr>
             <strong>Company Website:</strong> <%= link_to @job.company.profile.website, @job.company.profile.website %>
           <% end %>
+
+          <hr>
+          <%= link_to 'Company Details', @job.company, class: 'btn btn-green' %>
         </div>
       </div>
     </div>
