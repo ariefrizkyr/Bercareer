@@ -20,7 +20,7 @@
               <%= icon('map-marker', class: 'strong fa-3x') %>
             </div>
 
-            <div class="col-sm-7 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
               <h4 class="media-heading">Location</h4>
               <%= @job.city %>, <%= @job.province %>
             </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-1 col-sm-offset-1">
               <%= icon('bars', class:'fa-3x') %>
             </div>
-            <div class="col-sm-7 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
               <h4 class="media-heading">Job Category</h4>
               <%= @job.main_category %>
               <% if @job.second_category.present? %>
@@ -47,7 +47,7 @@
             <div class="col-sm-1 col-sm-offset-1">
               <%= icon('briefcase', class:'fa-3x') %>
             </div>
-            <div class="col-sm-7 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
               <h4 class="media-heading">Job Status</h4>
               <%= @job.job_type %>
             </div>
@@ -60,7 +60,7 @@
               <%= icon('usd', class: 'fa-3x') %>
             </div>
 
-            <div class="col-sm-7 col-sm-offset-1">
+            <div class="col-sm-8 col-sm-offset-1">
               <h4 class="media-heading">Salary</h4>
               <% if @job.is_paid == true %>
                 IDR <%= @job.salary %> <%= @job.salary_interval %>

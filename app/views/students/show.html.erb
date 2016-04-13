@@ -1,76 +1,200 @@
-<div class="row">
-  <div class="col-md-4">
-    <%= image_tag @student.resume.photo.url(:medium), class: 'img-circle' %><br>
-    Name : <%= @student.first_name %> <%= @student.last_name %><br>
-    Gender : <%= @student.resume.gender %><br>
-    Date of Birth : <%= @student.resume.birth_date.strftime("%B %d, %Y") %><br>
-    Address : <%= @student.resume.address %><br>
-    City : <%= @student.resume.city %><br>
-    Province : <%= @student.resume.province %><br>
-    Country : <%= @student.resume.country %><br>
-    Postal Code : <%= @student.resume.postal_code %>
-  </div>
+<div class="container margin-top margin-bottom">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-green">
+        <div class="panel-heading text-center">
+          <%= image_tag @student.resume.photo.url(:medium), class: 'img-circle', style: 'border: 5px solid #fff; max-width: 80%;' %>
+          <h3><strong><%= @student.first_name %> <%= @student.last_name %></strong></h3>
+          <h5><strong><%= @student.resume.major %>, <%= @student.resume.university %></strong></h5>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('transgender', class: 'strong fa-3x') %>
+            </div>
 
-  <div class="col-md-4">
-    University : <%= @student.resume.university %><br>
-    Major : <%= @student.resume.major %><br>
-    Level : <%= @student.resume.level %><br>
-    Graduation Year (Expected) : <%= @student.resume.grad_year.strftime("%Y") %><br>
-    GPA/IPK : <%= @student.resume.gpa %><br>
-    Skills : <%= @student.resume.skill_list %><br>
-    Languages : <%= @student.resume.language_list %>
-  </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <h4 class="media-heading">Gender</h4>
+              <%= @student.resume.gender %>
+            </div>
+          </div>
 
-  <div class="col-md-4">
-    Experiences :<br>
-    <ul>
-      <% @student.resume.experiences.each do |exp| %>
-        <li>Company Name: <%= exp.company_name %></li>
-        <li>Position: <%= exp.position %></li>
-        <li>Time Period: <%= exp.start_work.strftime("%B %Y") %> -
-        <% if exp.is_current == true %>
-           Currently Working here
-        <% else %>
-          <%= exp.end_work.strftime("%B %Y") %>
-        <% end %></li>
-        <li>Description: <br><%= exp.description %></li>
-      <% end %>
-    </ul>
-    Feedbacks :<br>
-    <div class="average-feedback-rating" data-score="<%= @average_feedback %>"></div>
-    <span>Based on <%= @student.feedbacks.count %> feedbacks</span>
-    <hr>
-    <%= render @student.feedbacks %><br>
-    Portfolios :<br>
-    <ul>
-      <% @student.resume.portfolios.each do |port| %>
-        <li>Title: <%= port.title %></li>
-        <li>Description: <%= port.description %></li>
-        <li>Link: <%= port.link %></li>
-      <% end %>
-    </ul>
-    Facebook : <%= @student.resume.facebook_url %><br>
-    Twitter : <%= @student.resume.twitter_url %><br>
-    LinkedIn : <%= @student.resume.linkedin_url %><br>
-    Google+ : <%= @student.resume.googleplus_url %><br>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('calendar-o', class: 'strong fa-3x') %>
+            </div>
+
+            <div class="col-sm-8 col-sm-offset-1">
+              <h4 class="media-heading">Date of Birth</h4>
+              <%= @student.resume.birth_date.strftime("%B %d, %Y") %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-1 col-sm-offset-1">
+              <%= icon('map', class: 'strong fa-3x') %>
+            </div>
+
+            <div class="col-sm-8 col-sm-offset-1">
+              <h4 class="media-heading">Address</h4>
+              <%= @student.resume.address %><br>
+              <%= @student.resume.city %>, <%= @student.resume.province %><br>
+              <%= @student.resume.country %> (<%= @student.resume.postal_code %>)
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <% if @student.resume.facebook_url.present? %>
+              <div class="col-sm-3 text-center">
+                <%= link_to @student.resume.facebook_url do %>
+                  <%= icon('facebook-square', class: 'strong fa-2x', style: 'color: #3b5998') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @student.resume.twitter_url.present? %>
+              <div class="col-sm-3 text-center">
+                <%= link_to @student.resume.twitter_url do %>
+                  <%= icon('twitter-square', class: 'strong fa-2x', style: 'color: #55acee') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @student.resume.linkedin_url.present? %>
+              <div class="col-sm-3 text-center">
+                <%= link_to @student.resume.linkedin_url do %>
+                  <%= icon('linkedin-square', class: 'strong fa-2x', style: 'color: #0077B5') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @student.resume.googleplus_url.present? %>
+              <div class="col-sm-3 text-center">
+                <%= link_to @student.resume.googleplus_url do %>
+                  <%= icon('google-plus-square', class: 'strong fa-2x', style: 'color: #d34836') %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <% if current_company %>
+
+          <div class="panel-footer text-center">
+            <% if @student.applies %>
+              <p>This student is applying for:</p>
+              <%= render 'accepts/form' %>
+            <% end %>
+
+            <hr>
+
+            <%= link_to 'Send message', new_message_path(to: @student.id), class: 'btn btn-yellow' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-green">
+        <div class="panel-heading text-center">
+          <h3><strong>Details</strong></h3>
+        </div>
+
+        <div class="panel-body">
+          <h4><strong>Education:</strong></h4>
+          <strong>University:</strong> <%= @student.resume.university %><br>
+          <strong>Major:</strong> <%= @student.resume.major %><br>
+          <strong>Level:</strong> <%= @student.resume.level %><br>
+          <strong>Graduation Year:</strong> <%= @student.resume.grad_year.strftime("%Y") %><br>
+          <strong>GPA/IPK:</strong> <%= @student.resume.gpa %><br>
+
+          <hr>
+
+          <h4><strong>Skills:</strong></h4>
+          <%= @student.resume.skill_list %>
+
+          <hr>
+
+          <h4><strong>Languages:</strong></h4>
+          <%= @student.resume.language_list %>
+
+          <% if @student.resume.experiences.present? %>
+            <hr>
+
+            <h4><strong>Working Experiences:</strong></h4>
+            <div class="row">
+              <% @student.resume.experiences.each do |exp| %>
+                <div class="col-sm-6">
+                  <strong>Company Name:</strong> <%= exp.company_name %><br>
+                  <strong>Position:</strong> <%= exp.position %><br>
+                  <strong>Time Period:</strong> <%= exp.start_work.strftime("%B %Y") %> -
+                  <% if exp.is_current == true %>
+                     now
+                  <% else %>
+                    <%= exp.end_work.strftime("%B %Y") %>
+                  <% end %><br>
+                  <strong>Description:</strong><br>
+                  <%= exp.description %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if @student.resume.portfolios.present? %>
+            <hr>
+
+            <h4><strong>Portfolios:</strong></h4>
+            <div class="row">
+              <% @student.resume.portfolios.each do |port| %>
+                <div class="col-sm-6">
+                  <strong>Portfolio Name:</strong> <%= port.title %><br>
+                  <strong>Description:</strong> <%= port.description %><br>
+                  <strong>URL:</strong> <%= link_to port.link do %><%= port.link %><% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% if @student.feedbacks.present? %>
+            <hr>
+
+            <h4><strong>Feedbacks:</strong></h4>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <strong>Average Feedback:</strong>
+                <div class="average-feedback-rating" data-score="<%= @average_feedback %>"></div>
+                <small>Based on <%= @student.feedbacks.count %> feedbacks</small>
+              </div>
+
+              <div class="col-sm-8">
+                <% @student.feedbacks.each do |feedback| %>
+                  <div class="feedback-rating" data-score="<%= feedback.rating %>"></div>
+                  <strong>Feedback from <%= feedback.company.company_name %></strong>
+                  <p><%= feedback.comment %></p>
+
+                  <% if company_signed_in? %>
+                    <% if feedback.company_id == current_company.id %>
+                      <%= link_to 'Edit', edit_student_feedback_path(feedback.student, feedback) %> |
+                      <%= link_to 'Delete', student_feedback_path(feedback.student, feedback), method: :delete,
+                      data: {confirm: 'Are you sure?'} %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<% if current_company %>
-  <div class="row text-center">
-    <%= link_to 'Send message', new_message_path(to: @student.id), class: 'btn btn-default' %>
-
-    <% if @student.applies %>
-      <p>This student is applying for:</p>
-      <%= render 'accepts/form' %>
-    <% end %>
-
-    <% if @student.jobs %>
-      <%= link_to 'Give feedback', new_student_feedback_path(@student) unless
-      Feedback.where(company_id: current_company.id, student_id: @student.id).count > 0 %>
-    <% end %>
-    <br><br>
-  </div>
-<% end %>
 
 <script>
   $('.feedback-rating').raty({

@@ -1,5 +1,7 @@
 <div class="feedback-rating" data-score="<%= feedback.rating %>"></div>
+<strong>Feedback from <%= feedback.company.company_name %></strong>
 <p><%= feedback.comment %></p>
+<hr>
 
 <% if company_signed_in? %>
   <% if feedback.company_id == current_company.id %>

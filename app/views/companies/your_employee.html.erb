@@ -25,6 +25,8 @@
                 <%= link_to 'Job Details', employee.job, class: 'btn btn-blue' %>
                 <%= link_to 'Applicant Details', employee.student, class: 'btn btn-red' %>
                 <%= link_to 'Send Message', new_message_path(to: employee.student.id), class: 'btn btn-yellow' %>
+                <%= link_to 'Give Feedback', new_student_feedback_path(employee.student.id), class: 'btn btn-green' unless
+                Feedback.where(company_id: current_company.id, student_id: employee.student.id).count > 0 %>
               </div>
             </div>
             <hr>

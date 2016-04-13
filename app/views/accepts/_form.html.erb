@@ -4,6 +4,6 @@
     <%= f.collection_select(:job_id, @student.jobs, :id, :job_title, {class: 'form-control'}) %>
   </div>
   <div class="form-group">
-    <%= f.submit 'Hire', class: 'btn btn-success' %>
+    <%= f.submit 'Hire This Student', class: 'btn btn-green' %>
   </div>
 <% end %>
