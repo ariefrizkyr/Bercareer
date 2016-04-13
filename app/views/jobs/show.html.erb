@@ -4,13 +4,17 @@
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-default">
-        <div class="panel-heading text-center">
-          <%= image_tag @job.company.profile.logo.url(:medium) %>
-          <h4><%= @job.job_title %></h4>
-          <h5><%= @job.company.company_name %></h5>
-        </div>
-
         <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <%= image_tag @job.company.profile.logo.url(:medium), style: 'max-width: 80%' %>
+              <h4><%= @job.job_title %></h4>
+              <h5><%= @job.company.company_name %></h5>
+            </div>
+          </div>
+
+          <hr>
+
           <div class="row">
             <div class="col-sm-1 col-sm-offset-1">
               <%= icon('map-marker', class: 'strong fa-3x') %>
