@@ -327,7 +327,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-
 /*------------------------------------------*/
 /*   Flash Messages
 /*------------------------------------------*/
@@ -363,6 +362,57 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1em;
 }
 
+/*------------------------------------------*/
+/*   Panels
+/*------------------------------------------*/
+
+.panel-green {
+  border-color: $green-dark;
+  & > .panel-heading {
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+    color: $white;
+    background-color: $green;
+    border-color: $green-darker;
+  }
+}
+
+.panel-red {
+  border-color: $red-dark;
+  & > .panel-heading {
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+    color: $white;
+    background-color: $red;
+    border-color: $red-darker;
+  }
+}
+
+.panel-yellow {
+  border-color: $yellow-dark;
+  & > .panel-heading {
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+    color: $white;
+    background-color: $yellow;
+    border-color: $yellow-darker;
+  }
+}
+
+.panel-blue {
+  border-color: $blue-dark;
+  & > .panel-heading {
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+    color: $white;
+    background-color: $blue;
+    border-color: $blue-darker;
+  }
+}
 /*------------------------------------------*/
 /*   Labels
 /*------------------------------------------*/
