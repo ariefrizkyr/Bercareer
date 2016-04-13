@@ -1,21 +1,43 @@
-<div class="row">
-  <div class="col-sm-3">
-    <ul class="nav nav-pills nav-stacked">
-      <%= mailbox_section 'inbox', @box %>
-      <%= mailbox_section 'sent', @box %>
-      <%= mailbox_section 'trash', @box %>
-    </ul>
+<% provide(:title, "Message Center") %>
+
+<div class="container margin-top margin-bottom">
+  <div class="col-md-8">
+    <div class="panel panel-green">
+      <div class="panel-heading text-center">
+        <h2>Message Center</h2>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <%= mailbox_section 'inbox', @box %>
+              <%= mailbox_section 'sent', @box %>
+              <%= mailbox_section 'trash', @box %>
+            </ul>
+          </div>
+
+          <div class="col-sm-9">
+            <% if @box == 'trash' %>
+             <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-red', method: :delete,
+                            data: {confirm: 'Are you sure?'} %></p>
+            <% end %>
+            <ul class="list-group">
+              <%= render partial: 'conversations/conversation', collection: @conversations %>
+            </ul>
+
+            <%= will_paginate %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-sm-9">
-    <% if @box == 'trash' %>
-     <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
-                    data: {confirm: 'Are you sure?'} %></p>
+  <div class="col-md-4">
+    <% if student_signed_in? %>
+      <%= render 'layouts/studentsidebar' %>
+    <% elsif company_signed_in? %>
+      <%= render 'layouts/companysidebar' %>
     <% end %>
-    <ul class="list-group">
-      <%= render partial: 'conversations/conversation', collection: @conversations %>
-    </ul>
-
-    <%= will_paginate %>
   </div>
 </div>
