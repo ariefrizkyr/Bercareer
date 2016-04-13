@@ -6,7 +6,7 @@
   <div class="panel-body">
     <ul class="sidebar-list">
       <% if current_student.resume %>
-        <li class="sidebar-item"><%= link_to 'View Resume', student_resume_path(current_student) %></li>
+        <li class="sidebar-item"><%= link_to 'View Resume', student_path(current_student) %></li>
         <li class="sidebar-item"><%= link_to 'Edit Resume', edit_student_resume_path(current_student) %></li>
       <% else %>
         <li class="sidebar-item"><%= link_to 'Create Resume', new_student_resume_path(current_student) %></li>
