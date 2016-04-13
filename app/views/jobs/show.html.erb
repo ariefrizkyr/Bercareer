@@ -144,8 +144,10 @@
 
     <div class="col-md-8">
       <div class="panel panel-green">
-        <div class="panel-body">
+        <div class="panel-heading text-center">
           <h3>Job Overview</h3>
+        </div>
+        <div class="panel-body">
           <%= @job.short_desc %>
           <br>
           <br>
@@ -153,22 +155,37 @@
           <p><strong>Office location:</strong> <%= @job.address %><br>
           <%= @job.city %>, <%= @job.province %><br>
           <%= @job.country %></p>
-          <hr>
+        </div>
+      </div>
 
+      <div class="panel panel-green">
+        <div class="panel-heading text-center">
           <h3>Job Description</h3>
+        </div>
+
+        <div class="panel-body">
           <%= @job.job_desc %>
+        </div>
+      </div>
 
-          <hr>
-
+      <div class="panel panel-green">
+        <div class="panel-heading text-center">
           <h3>Requirements</h3>
+        </div>
+
+        <div class="panel-body">
           <%= @job.requirement %>
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-body">
+      <div class="panel panel-green">
+        <div class="panel-heading text-center">
           <h3>About the Company</h3>
-          <strong>Description:</strong> <%= @job.company.profile.description %>
+        </div>
+
+        <div class="panel-body">
+          <strong>Description:</strong><br>
+          <%= @job.company.profile.description %>
           <hr>
           <strong>Headquarters:</strong> <%= @job.company.profile.address %><br>
           <%= @job.company.profile.city %>, <%= @job.company.profile.province %><br>
