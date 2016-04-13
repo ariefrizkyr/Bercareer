@@ -1,0 +1,41 @@
+<div class="container margin-top margin-bottom">
+    <% @feedbacks.each do |feedback| %>
+      <div class="col-md-6">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <h4><strong>Feedback from <%= feedback.company.company_name %></strong></h4>
+          </div>
+
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="feedback-rating" data-score="<%= feedback.rating %>"></div>
+              </div>
+
+              <div class="col-sm-9">
+                <%= feedback.comment %>
+                <% if company_signed_in? %>
+                  <% if feedback.company_id == current_company.id %>
+                    <br>
+                    <%= link_to 'Edit', edit_student_feedback_path(feedback.student, feedback) %>
+                    <%= link_to 'Delete', student_feedback_path(feedback.student, feedback), method: :delete,
+                    data: {confirm: 'Are you sure?'} %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<script>
+  $('.feedback-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

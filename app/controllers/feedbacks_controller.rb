@@ -1,7 +1,11 @@
 class FeedbacksController < ApplicationController
-  before_action :authenticate_company!
+  before_action :authenticate_company!, except: [:index]
   before_action :find_student
   before_action :find_feedback, only: [:edit, :update, :destroy]
+
+  def index
+    @feedbacks = Feedback.all
+  end
 
   def new
     @feedback = Feedback.new

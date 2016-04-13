@@ -1,7 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_student!
+  before_action :authenticate_student!, except: [:index]
   before_action :find_company
   before_action :find_review, only: [:edit, :update, :destroy]
+
+  def index
+    @reviews = Review.all
+  end
 
   def new
     @review = Review.new

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :students do
     resource :resume, except: [:index, :show]
     resources :accepts, only: [:create]
-    resources :feedbacks, except: [:index, :show]
+    resources :feedbacks, except: [:show]
     collection do
       match 'search' => 'students#search', via: [:get, :post], as: :search
     end
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     resource :profile, except: [:index, :show]
-    resources :reviews, except: [:index, :show]
+    resources :reviews, except: [:show]
     collection do
       match 'search' => 'companies#search', via: [:get, :post], as: :search
     end

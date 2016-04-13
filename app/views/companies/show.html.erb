@@ -34,26 +34,26 @@
             <%= @company.profile.description %>
           </div>
         </div>
+        <hr>
 
-        <% if @company.reviews.present? %>
-          <hr>
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="media-heading">Average Review from students:</h4>
+            <div class="average-review-rating" data-score="<%= @average_review %>"></div>
+            <small>Based on <%= @company.reviews.count %> reviews</small><br>
+            <small><%= link_to 'See all reviews', company_reviews_path(@company) %></small>
 
-          <div class="row">
-            <div class="col-sm-12">
-              <h4 class="media-heading">Average Review from students:</h4>
-              <div class="average-review-rating" data-score="<%= @average_review %>"></div>
-              <small>Based on <%= @company.reviews.count %> reviews</small>
-
-              <% if current_student %>
-                <% if @company.students.where('student_id = ?', current_student.id).present? %>
-                  <%= link_to 'Give review', new_company_review_path(@company) unless
-                  Review.where(company_id: @company.id, student_id: current_student.id).present? %>
-                <% end %>
+            <% if current_student %>
+              <% if @company.students.where('student_id = ?', current_student.id).present? %>
+                <hr>
+                <%= link_to 'Give Review', new_company_review_path(@company), class: 'btn btn-green' unless
+                Review.where(company_id: @company.id, student_id: current_student.id).present? %>
               <% end %>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
+
       <% if current_company %>
         <% if @profile.company_id == current_company.id %>
           <div class="panel-footer">

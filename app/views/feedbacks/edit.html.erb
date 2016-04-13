@@ -1,15 +1,25 @@
-<h1>Edit Review</h1>
+<div class="container margin-top margin-bottom">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <h3><strong>Give Feedback</strong></h3>
+      </div>
 
-<%= simple_form_for([@student, @feedback]) do |f| %>
-  <div id="rating-form">
-    <label>Rating</label><br>
+      <div class="panel-body">
+        <%= simple_form_for([@student, @feedback]) do |f| %>
+          <div id="rating-form">
+            <label>Rating</label><br>
+          </div>
+          <br>
+          <%= f.input :comment %>
+          <%= f.hidden_field :student_id %>
+          <%= f.hidden_field :company_id %>
+          <%= f.button :submit, class: 'btn btn-green' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <br>
-  <%= f.input :comment %>
-  <%= f.hidden_field :student_id %>
-  <%= f.hidden_field :company_id %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+</div>
 
 <script>
   $('#rating-form').raty({

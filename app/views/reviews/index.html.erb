@@ -1,0 +1,41 @@
+<div class="container margin-top margin-bottom">
+    <% @reviews.each do |review| %>
+      <div class="col-md-6">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <h4><strong>Review from <%= review.student.first_name %> <%= review.student.last_name %></strong></h4>
+          </div>
+
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="review-rating" data-score="<%= review.rating %>"></div>
+              </div>
+
+              <div class="col-sm-9">
+                <%= review.comment %>
+                <% if student_signed_in? %>
+                  <% if review.student_id == current_student.id %>
+                  <br>
+                    <%= link_to 'Edit', edit_company_review_path(review.company, review) %>
+                    <%= link_to 'Delete', company_review_path(review.company, review), method: :delete,
+                    data: {confirm: 'Are you sure?'} %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

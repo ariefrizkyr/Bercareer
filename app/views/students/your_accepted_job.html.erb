@@ -27,6 +27,8 @@
               <div class="small-gap"></div>
               <%= link_to 'Job Details', accept.job, class: 'btn btn-green' %>
               <%= link_to 'Send Message', new_message_path(to: accept.job.company.id), class: 'btn btn-yellow' %>
+              <%= link_to 'Give Review', new_company_review_path(accept.job.company.id), class: 'btn btn-red' unless
+              Review.where(company_id: accept.job.id, student_id: current_student.id).present? %>
             </div>
           </div>
           <hr>
