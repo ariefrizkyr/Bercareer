@@ -3,6 +3,7 @@ class CreateResumes < ActiveRecord::Migration
     create_table :resumes do |t|
       t.references :student, index: true, foreign_key: true
       t.string :gender
+      t.text :description
       t.date :birth_date
       t.string :phone_number
       t.text :address
@@ -28,8 +29,6 @@ class CreateResumes < ActiveRecord::Migration
       ## Portfolio has own model
       ## Skills use acts as taggable on
       ## Languages use acts as taggable on
-      
-      t.timestamps null: false
     end
   end
 end

@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 20160404023118) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
@@ -203,6 +207,7 @@ ActiveRecord::Schema.define(version: 20160404023118) do
   create_table "resumes", force: :cascade do |t|
     t.integer  "student_id"
     t.string   "gender"
+    t.text     "description"
     t.date     "birth_date"
     t.string   "phone_number"
     t.text     "address"
@@ -256,6 +261,10 @@ ActiveRecord::Schema.define(version: 20160404023118) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
