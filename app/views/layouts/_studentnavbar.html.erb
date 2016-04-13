@@ -29,6 +29,7 @@
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <% if current_student.resume %>
+                  <li><%= link_to 'View Resume', student_resume_path(current_student) %></li>
                   <li><%= link_to 'Edit Resume', edit_student_resume_path(current_student) %></li>
                 <% else %>
                   <li><%= link_to 'Create Resume', new_student_resume_path(current_student) %></li>

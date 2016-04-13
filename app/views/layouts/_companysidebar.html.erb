@@ -6,6 +6,7 @@
   <div class="panel-body">
     <ul class="sidebar-list">
       <% if current_company.profile %>
+        <li class="sidebar-item"><%= link_to 'View Profile', company_profile_path(current_company) %></li>
         <li class="sidebar-item"><%= link_to 'Edit Profile', edit_company_profile_path(current_company) %></li>
       <% else %>
         <li><%= link_to 'Create Profile', new_company_profile_path(current_company) %></li>
