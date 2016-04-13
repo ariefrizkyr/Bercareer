@@ -1,31 +1,111 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= image_tag @company.profile.logo.url(:medium) %><br>
-    Company Name: <%= @company.company_name %><br>
-    Field: <%= @company.profile.field %><br>
-    Description:<br>
-    <%= @company.profile.description %><br>
-    Address: <%= @company.profile.address %><br>
-    City: <%= @company.profile.city %><br>
-    Province: <%= @company.profile.province %><br>
-    Country: <%= @company.profile.country %><br>
-    Company Website: <%= @company.profile.website %><br>
-    Reviews :<br>
-    <div class="average-review-rating" data-score="<%= @average_review %>"></div>
-    <span>Based on <%= @company.reviews.count %> reviews</span>
-    <hr>
-    <%= render @company.reviews %><br>
-    <% if current_student %>
-      <% if @company.students.where('student_id = ?', current_student.id).present? %>
-        <%= link_to 'Give review', new_company_review_path(@company) unless
-        Review.where(company_id: @company.id, student_id: current_student.id).present? %>
+<div class="container margin-top margin-bottom">
+  <div class="col-md-4">
+    <div class="panel panel-green">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <%= image_tag @company.profile.logo.url(:medium), sytle: 'max-width: 80%' %>
+            <h4><strong><%= @company.company_name %></strong></h4>
+            <%= @company.profile.field %><br>
+            <% if @company.profile.website.present? %>
+              <%= link_to @company.profile.website do %>
+                <%= @company.profile.website %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="media-heading">Headquarter:</h4>
+            <%= @company.profile.address %><br>
+            <%= @company.profile.city %>, <%= @company.profile.province %><br>
+            <%= @company.profile.country %>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="media-heading">About:</h4>
+            <%= @company.profile.description %>
+          </div>
+        </div>
+
+        <% if @company.reviews.present? %>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="media-heading">Average Review from students:</h4>
+              <div class="average-review-rating" data-score="<%= @average_review %>"></div>
+              <small>Based on <%= @company.reviews.count %> reviews</small>
+
+              <% if current_student %>
+                <% if @company.students.where('student_id = ?', current_student.id).present? %>
+                  <%= link_to 'Give review', new_company_review_path(@company) unless
+                  Review.where(company_id: @company.id, student_id: current_student.id).present? %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% if current_company %>
+        <% if @profile.company_id == current_company.id %>
+          <div class="panel-footer">
+              <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if current_company %>
-      <% if @profile.company_id == current_company.id %>
-        <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
-      <% end %>
-    <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-green">
+      <div class="panel-heading text-center">
+        <h3><strong>Jobs Available</strong></h3>
+      </div>
+
+      <div class="panel-body">
+        <% @company.jobs.each do |job| %>
+          <div class="col-sm-6">
+            <div class="panel panel-blue">
+              <div class="panel-heading text-center">
+                <h4><strong><%= job.job_title %></strong></h4>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <label class="label label-<%= job.job_type.delete(' ').downcase %>"><%= job.job_type %></label> |
+                    <label class="label label-<%= job.urgency.delete(' ').downcase %>"><%= job.urgency %></label> |
+                    <% if job.is_paid == true %>
+                      <label class="label label-green">Paid</label>
+                    <% else %>
+                      <label class="label label-blue">No paid</label>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="small-gap"></div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p class="small"><strong>Working location:</strong> <%= job.city %>, <%= job.province %></p>
+                    <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %></p>
+                    <p class="small"><strong>Dificulties:</strong> <%= job.difficulties %> Application</p>
+                    <p class="small"><strong>Deadline:</strong> <%= job.deadline.strftime("%d %B %Y at %H:%M") %></p>
+                    <%= link_to 'Job Details', job, class: 'btn btn-block btn-green' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
