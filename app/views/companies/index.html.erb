@@ -1,6 +1,6 @@
 <% provide(:title, "Browse Companies") %>
 
-<div class="white-background padding-top padding-bottom margin-bottom">
+<div class="search-company-section padding-top padding-bottom margin-bottom">
   <div class="container">
     <div class="row">
       <%= search_form_for @search, url: search_companies_path, method: :post do |f| %>
@@ -12,7 +12,7 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.select :profile_city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %>
+            <%= f.select :profile_field_cont, field, { include_blank: 'Field' }, class: 'selection form-control' %>
           </div>
         </div>
 

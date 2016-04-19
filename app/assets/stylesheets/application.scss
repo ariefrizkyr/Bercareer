@@ -166,6 +166,16 @@ body {
   background-size: cover;
 }
 
+.search-company-section {
+  background: url(asset-path('search-company.jpg')) no-repeat center center;
+  background-size: cover;
+}
+
+.search-student-section {
+  background: url(asset-path('search-student.jpg')) no-repeat center center;
+  background-size: cover;
+}
+
 .white-divider {
   width: 400px;
   border-top: 0.5px solid $white;

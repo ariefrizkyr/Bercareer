@@ -8,7 +8,7 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <% unless current_page?(company_home_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) || current_company %>
+  <% unless current_page?(employers_path) || current_page?(new_company_session_path) || current_page?(new_company_registration_path) || current_company %>
     <%= render 'layouts/studentnavbar' %>
   <% else %>
     <%= render 'layouts/companynavbar' %>

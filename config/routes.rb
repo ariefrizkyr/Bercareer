@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  get 'company-home' => 'pages#company_home'
+  get 'employers' => 'pages#company_home'
   get 'your-applications' => 'students#your_apply'
   get 'your-accepted-jobs' => 'students#your_accepted_job'
   get 'your-jobs' => 'companies#your_job'
