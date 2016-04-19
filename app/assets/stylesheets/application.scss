@@ -113,10 +113,93 @@ body {
   }
 }
 
+.gray-background {
+  background-color: $gray-lighter;
+  color: $white;
+  & h1, h2, h3, h4, h5, h6 {
+    color: $gray;
+  }
+
+  & p {
+    color: $gray;
+  }
+
+  & a {
+    color: $gray;
+
+  &:hover {
+      color: $green;
+      text-decoration: none;
+    }
+  }
+}
+
+.resume-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: url(asset-path('resume-section.jpg')) no-repeat center center;
+  background-size: cover;
+  color: $white;
+  & .content {
+    position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+    & > h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 700;
+        color: $green;
+        & .white {
+          color: $white;
+        }
+    }
+
+    & > h3 {
+      font-weight: 500;
+    }
+  }
+}
+
 .white-divider {
   width: 400px;
   border-top: 0.5px solid $white;
   border-bottom: 0.5px solid $white;
+}
+
+.intro-header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: $gray-lighter;
+    background: url(asset-path('head-image.jpg')) no-repeat center center;
+    background-size: cover;
+
+    & .intro-message {
+        position: relative;
+        padding-top: 5%;
+        padding-bottom: 40%;
+
+        & > h1 {
+            margin: 0;
+            font-size: 65px;
+            font-weight: 700;
+            color: $green;
+            & .gray {
+              color: $gray;
+            }
+        }
+
+        & > h3 {
+          font-weight: 500;
+        }
+
+        & .intro-divider {
+            width: 400px;
+            border-top: 0.5px solid $green-lighter;
+            border-bottom: 0.5px solid $green-lighter;
+        }
+    }
 }
 
 .green-divider {
@@ -147,41 +230,6 @@ body {
   width: 400px;
   border-top: 0.5px solid $gray-light  ;
   border-bottom: 0.5px solid $gray-light  ;
-}
-
-.intro-header {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
-    background: url(asset-path('head-image.jpg')) no-repeat center center;
-    background-size: cover;
-
-    & .intro-message {
-        position: relative;
-        padding-top: 5%;
-        padding-bottom: 40%;
-
-        & > h1 {
-            margin: 0;
-            font-size: 65px;
-            font-weight: 700;
-            color: $green;
-            & .gray {
-              color: $gray;
-            }
-        }
-
-        & > h3 {
-          font-weight: 500;
-        }
-
-        & .intro-divider {
-            width: 400px;
-            border-top: 0.5px solid $green-lighter;
-            border-bottom: 0.5px solid $green-lighter;
-        }
-    }
 }
 
 .padding-top {

@@ -1,0 +1,57 @@
+<div class="gray-background padding-top padding-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4 class="bold">For Students</h4>
+        <%= link_to 'Jobs', jobs_path %><br>
+        <%= link_to 'Internship', jobs_path %><br>
+        <%= link_to 'Create Resume', new_student_registration_path %><br>
+        <%= link_to 'Student Term of Service', '#' %>
+      </div>
+
+      <div class="col-md-3">
+        <h4 class="bold">For Employers</h4>
+        <%= link_to 'Hire Employers', company_home_path %><br>
+        <%= link_to 'Hire Intern', company_home_path %><br>
+        <%= link_to 'Search Talent', new_company_registration_path %><br>
+        <%= link_to 'Company Term of Service', '#' %><br>
+      </div>
+
+      <div class="col-md-3">
+        <h4 class="bold">Bercareer</h4>
+        <%= link_to 'About', '#' %><br>
+        <%= link_to 'Contact', '#' %><br>
+        <%= link_to 'Privacy Policy', '#' %>
+      </div>
+
+      <div class="col-md-3">
+        <h4 class="bold">Find Us</h4>
+        <%= image_tag('logo.png', width: '250px') %>
+        <div class="small-gap"></div>
+        <div class="col-sm-4 text-center">
+          <%= link_to 'https://www.facebook.com/bercareer' do %>
+            <%= icon('facebook-square', class: 'strong fa-2x', style: 'color: #3b5998') %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4 text-center">
+          <%= link_to 'https://twitter.com/bercareer' do %>
+            <%= icon('twitter-square', class: 'strong fa-2x', style: 'color: #55acee') %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4 text-center">
+          <%= link_to 'https://instagram.com/bercareer' do %>
+            <%= icon('instagram', class: 'strong fa-2x', style: 'color: #3f729b') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>&copy; 2016 Bercareer. Hak cipta dilindungi.</p>
+      </div>
+    </div>
+  </div>
+</div>

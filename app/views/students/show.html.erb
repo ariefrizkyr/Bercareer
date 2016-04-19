@@ -1,4 +1,4 @@
-<% provide(:title, "#{@student.first_name} #{@student.last_name} Resume") %>
+<% provide(:title, "#{@student.first_name} #{@student.last_name} Profile") %>
 
 <div class="container margin-top margin-bottom">
   <div class="row">
@@ -128,38 +128,44 @@
             <hr>
 
             <h4><strong>Work experiences:</strong></h4>
-            <div class="row">
-              <% @student.resume.experiences.each do |exp| %>
-                <div class="col-sm-6">
-                  <strong>Company Name:</strong> <%= exp.company_name %><br>
-                  <strong>Position:</strong> <%= exp.position %><br>
-                  <strong>Time Period:</strong> <%= exp.start_work.strftime("%B %Y") %> -
-                  <% if exp.is_current == true %>
-                     now
-                  <% else %>
-                    <%= exp.end_work.strftime("%B %Y") %>
-                  <% end %><br>
-                  <strong>Description:</strong><br>
-                  <%= exp.description %>
-                </div>
-              <% end %>
-            </div>
+            <% @student.resume.experiences.each_slice(2) do |exps| %>
+              <div class="row">
+                <% exps.each do |exp| %>
+                  <div class="col-sm-6">
+                    <strong>Company Name:</strong> <%= exp.company_name %><br>
+                    <strong>Position:</strong> <%= exp.position %><br>
+                    <strong>Time Period:</strong> <%= exp.start_work.strftime("%B %Y") %> -
+                    <% if exp.is_current == true %>
+                       now
+                    <% else %>
+                      <%= exp.end_work.strftime("%B %Y") %>
+                    <% end %><br>
+                    <strong>Description:</strong><br>
+                    <%= exp.description %>
+                  </div>
+                <% end %>
+              </div>
+              <br>
+            <% end %>
           <% end %>
 
           <% if @student.resume.portfolios.present? %>
             <hr>
 
             <h4><strong>Portfolios:</strong></h4>
-            <div class="row">
-              <% @student.resume.portfolios.each do |port| %>
-                <div class="col-sm-6">
-                  <strong>Portfolio Name:</strong> <%= port.title %><br>
-                  <strong>URL:</strong> <%= link_to port.link do %><%= port.link %><% end %><br>
-                  <strong>Description:</strong><br>
-                  <%= simple_format(port.description) %>
-                </div>
-              <% end %>
-            </div>
+            <% @student.resume.portfolios.each_slice(2) do |ports| %>
+              <div class="row">
+                <% ports.each do |port| %>
+                  <div class="col-sm-6">
+                    <strong>Portfolio Name:</strong> <%= port.title %><br>
+                    <strong>URL:</strong> <%= link_to port.link do %><%= port.link %><% end %><br>
+                    <strong>Description:</strong><br>
+                    <%= simple_format(port.description) %>
+                  </div>
+                <% end %>
+              </div>
+              <br>
+            <% end %>
           <% end %>
 
           <% if @student.feedbacks.present? %>
