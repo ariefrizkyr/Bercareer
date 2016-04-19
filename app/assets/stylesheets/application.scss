@@ -161,6 +161,11 @@ body {
   }
 }
 
+.search-job-section {
+  background: url(asset-path('search-job.jpg')) no-repeat center center;
+  background-size: cover;
+}
+
 .white-divider {
   width: 400px;
   border-top: 0.5px solid $white;
