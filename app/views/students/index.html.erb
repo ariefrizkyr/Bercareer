@@ -1,4 +1,6 @@
-<div class="container-fluid white-background padding-top padding-bottom margin-bottom">
+<% provide(:title, "Browse Students") %>
+
+<div class="search-student-section padding-top padding-bottom margin-bottom">
   <div class="container">
     <%= search_form_for @search, url: search_students_path, method: :post do |f| %>
       <div class="row">
@@ -17,7 +19,7 @@
         <div class="col-md-4">
           <div class="form-group text-center" style="margin-top: -20px">
             <%= f.range_field :resume_gpa_gteq, in: 1..4, step: 0.1, id: 'gpa-slider', class: 'form-control' %>
-            <strong>Minimum GPA: <%= f.label :resume_gpa_gteq, '...', id: 'value', class: 'label label-green' %></strong>
+            <strong style="color: #fff;">Minimum GPA: <%= f.label :resume_gpa_gteq, '...', id: 'value', class: 'label label-green' %></strong>
           </div>
         </div>
       </div>
