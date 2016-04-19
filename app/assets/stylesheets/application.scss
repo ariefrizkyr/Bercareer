@@ -182,6 +182,42 @@ body {
   border-bottom: 0.5px solid $white;
 }
 
+.company-head {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+  color: $gray-lighter;
+  background: url(asset-path('company-head.jpg')) no-repeat center center;
+  background-size: cover;
+
+  & .company-message {
+      position: relative;
+      padding-top: 5%;
+      padding-bottom: 5%;
+
+      & > h1 {
+          margin: 0;
+          font-size: 65px;
+          font-weight: 700;
+          color: $green;
+          & .white {
+            color: $white;
+          }
+      }
+
+      & > h4 {
+        font-weight: 500;
+        color: $white;
+      }
+
+      & .intro-divider {
+          width: 400px;
+          border-top: 0.5px solid $green-lighter;
+          border-bottom: 0.5px solid $green-lighter;
+      }
+  }
+}
+
 .intro-header {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -205,7 +241,7 @@ body {
             }
         }
 
-        & > h3 {
+        & > h4 {
           font-weight: 500;
         }
 

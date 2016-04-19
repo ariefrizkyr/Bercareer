@@ -1,23 +1,18 @@
-<% provide(:title, "Company") %>
+<% provide(:title, "Employers") %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <h1>Bercareer Company Index</h1>
-      <p class="lead">This is the temp company homepage</p>
-      <% if current_company %>
-        <% if current_company.profile %>
-          <%= link_to 'Edit Profile', edit_company_profile_path(current_company), class: 'btn btn-primary' %>
-        <% else %>
-          <%= link_to 'Create Profile', new_company_profile_path(current_company), class: 'btn btn-primary' %>
-        <% end %>
-        <%= link_to 'View Companies', companies_path, class: 'btn btn-success' %>
-        <br>
-        <br>
-        <%= link_to 'Create Job', new_job_path, class: 'btn btn-primary' %>
-        <%= link_to 'View Jobs', jobs_path, class: 'btn btn-success' %>
-        <%= link_to 'Your Jobs List', your_jobs_path, class: 'btn btn-danger' %>
-      <% end %>
+<div class="company-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="company-message">
+          <h1>Scale up <span class="white">your team</span> today</h1>
+          <hr class="intro-divider">
+          <h4 class="white">Temukan talenta-talenta terbaik untuk menjadi intern atau bagian dalam timmu.</h4>
+          <div class="small-gap"></div>
+          <%= link_to 'Get Started', new_company_registration_path, class: 'btn btn-lg btn-green' %>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
