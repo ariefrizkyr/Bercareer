@@ -3,9 +3,9 @@
 
   <div class="btn-group-vertical pull-right">
     <% if conversation.is_trashed?(current_member) %>
-      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
+      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-blue', method: :post %>
     <% else %>
-      <%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+      <%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-red', method: :delete,
                   data: {confirm: 'Are you sure?'} %>
     <% end %>
   </div>

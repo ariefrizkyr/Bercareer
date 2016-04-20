@@ -1,24 +1,52 @@
-<div class="panel panel-default">
-  <div class="panel-heading"><%= @conversation.subject %></div>
+<% provide(:title, "Message Center") %>
 
-  <div class="panel-body">
-    <div class="messages">
-      <% @conversation.receipts_for(current_member).each do |receipt| %>
-        <% message = receipt.message %>
+<div class="container margin-top margin-bottom">
+  <div class="col-md-8">
+    <div class="panel panel-green">
+      <div class="panel-heading text-center">
+        <h2><%= @conversation.subject %></h2>
+      </div>
 
-        <p><strong><%= message.sender.first_name %> <%= message.sender.last_name %></strong> says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></p>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <%= mailbox_section 'inbox', @box %>
+              <%= mailbox_section 'sent', @box %>
+              <%= mailbox_section 'trash', @box %>
+            </ul>
+          </div>
 
-        <p><%= message.body %></p>
+          <div class="col-sm-9">
+            <div class="messages">
+              <% @conversation.receipts_for(current_member).each do |receipt| %>
+                <% message = receipt.message %>
 
-        <hr>
-      <% end %>
+                <p><strong><%= message.sender.first_name %> <%= message.sender.last_name %></strong> sent message at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></p>
 
-      <%= form_tag reply_conversation_path(@conversation), method: :post do %>
-        <div class="form-group">
-          <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+                <p><%= message.body %></p>
+
+                <hr>
+              <% end %>
+
+              <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+                <div class="form-group">
+                  <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+                </div>
+                <%= submit_tag "Send Message", class: 'btn btn-green' %>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <%= submit_tag "Send Message", class: 'btn btn-primary' %>
-      <% end %>
+      </div>
     </div>
+  </div>
+
+  <div class="col-md-4">
+    <% if student_signed_in? %>
+      <%= render 'layouts/studentsidebar' %>
+    <% elsif company_signed_in? %>
+      <%= render 'layouts/companysidebar' %>
+    <% end %>
   </div>
 </div>

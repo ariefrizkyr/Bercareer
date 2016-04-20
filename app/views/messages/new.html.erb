@@ -1,17 +1,49 @@
-<%= form_tag messages_path, method: :post do %>
-  <div class="form-group">
-    <%= label_tag 'message[subject]', 'Subject' %>
-    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+<% provide(:title, "Message Center") %>
+
+<div class="container margin-top margin-bottom">
+  <div class="col-md-8">
+    <div class="panel panel-green">
+      <div class="panel-heading text-center">
+        <h2>Message Center</h2>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked">
+              <%= mailbox_section 'inbox', @box %>
+              <%= mailbox_section 'sent', @box %>
+              <%= mailbox_section 'trash', @box %>
+            </ul>
+          </div>
+
+          <div class="col-sm-9">
+            <%= form_tag messages_path, method: :post do %>
+              <div class="form-group">
+                <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject', class: 'form-control', required: true %>
+              </div>
+
+              <div class="form-group">
+                <%= text_area_tag 'message[body]', nil, placeholder: 'Message', cols: 5, class: 'no-resize form-control', required: true %>
+              </div>
+
+              <div class="form-group">
+                <%= hidden_field_tag 'recipients', @chosen_recipient.id %>
+              </div>
+
+              <%= submit_tag 'Send', class: 'btn btn-green' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= label_tag 'message[body]', 'Message' %>
-    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+  <div class="col-md-4">
+    <% if student_signed_in? %>
+      <%= render 'layouts/studentsidebar' %>
+    <% elsif company_signed_in? %>
+      <%= render 'layouts/companysidebar' %>
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= hidden_field_tag 'recipients', @chosen_recipient.id %>
-  </div>
-
-  <%= submit_tag 'Send', class: 'btn btn-primary' %>
-<% end %>
+</div>
