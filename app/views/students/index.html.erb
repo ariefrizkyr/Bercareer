@@ -6,13 +6,32 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.select :resume_university_cont, university, { include_blank: 'University' }, class: 'selection form-control' %>
+            <%= f.text_field :first_name_cont, placeholder: 'First Name', class: 'form-control' %>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.select :resume_province_cont, province, { include_blank: 'Location' }, class: 'selection form-control' %>
+            <%= f.text_field :last_name_cont, placeholder: 'Last Name', class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.select :resume_university_cont, university, { include_blank: 'University' }, class: 'selection form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.select :resume_city_cont, city, { include_blank: 'City' }, class: 'selection form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.select :resume_province_cont, province, { include_blank: 'Province' }, class: 'selection form-control' %>
           </div>
         </div>
 

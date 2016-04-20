@@ -1,5 +1,6 @@
 <% if student_signed_in? %>
   <% if current_student.resume.present? %>
+    <% provide(:title, "Hello #{current_student.first_name}!") %>
     <div class="green-background padding-top padding-bottom">
       <div class="container">
         <div class="row">
@@ -77,6 +78,7 @@
       </div>
     </div>
   <% else %>
+    <% provide(:title, "Welcome #{current_student.first_name}!") %>
     <div class="green-background padding-top padding-bottom">
       <div class="container">
         <div class="row">
@@ -93,11 +95,11 @@
           <div class="col-md-8">
             <h3 class="bold">Welcome to bercareer. We are glad to have you here.</h3>
             <p class="headline">
-              Before you launch your career, you need to create your resume. Click the following
-              button to create your resume.
+              Before you launch your career, you need to create your resume.
+              Click the following button to create your resume.
             </p>
 
-            <%= link_to 'Create Resume', new_student_resume_path, class: 'btn btn-lg btn-green' %>
+            <%= link_to 'Create Resume', new_student_resume_path(current_student), class: 'btn btn-lg btn-green' %>
           </div>
 
           <div class="col-md-4">
@@ -108,6 +110,7 @@
     </div>
   <% end %>
 <% else %>
+  <% provide(:title, "Find internship, freelance, part time, and full time jobs") %>
   <div class="intro-header">
     <div class="container">
       <div class="row">

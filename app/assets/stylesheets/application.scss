@@ -176,6 +176,20 @@ body {
   background-size: cover;
 }
 
+.company-section {
+  background: url(asset-path('office.jpg')) no-repeat center center;
+  background-size: cover;
+
+  & .content {
+    background-color: rgba($gray-darker, 0.9);
+    color: $white;
+    padding: 10px 50px 30px 50px;
+    & > h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+  }
+}
+
 .white-divider {
   width: 400px;
   border-top: 0.5px solid $white;
