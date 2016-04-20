@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def company_home
 
   end
+
+  def contact
+
+  end
 end
