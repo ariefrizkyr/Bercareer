@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  resources :contacts, only: [:new, :create]
+  
   get 'employers' => 'pages#company_home'
   get 'your-applications' => 'students#your_apply'
   get 'your-accepted-jobs' => 'students#your_accepted_job'
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
   devise_for :students
 
   resources :messages, only: [:new, :create]
-  resources :contacts, only: [:new, :create]
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
