@@ -1,0 +1,46 @@
+<% provide(:title, "Contact Us") %>
+
+<div class="green-background padding-top padding-bottom text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="bold">Feel free to hit us up!</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-background padding-top padding-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+
+        <%= form_for @contact do |f| %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: 'Name', required: true, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_field :email, placeholder: 'Email', required: true, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_area :message, placeholder: 'Message', required: true, rows: 5, class: 'no-resize form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_field :nickname, placeholder: 'Nickname', required: true, class: 'hidden form-control' %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit 'Send Message', class: 'btn btn-green' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+
+      </div>
+    </div>
+  </div>
+</div>
