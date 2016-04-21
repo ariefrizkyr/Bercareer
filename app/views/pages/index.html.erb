@@ -38,15 +38,9 @@
                         <hr>
 
                         <div class="row">
-                          <div class="col-sm-4 text-center">
-                            <label class="label label-<%= job.job_type.delete(' ').downcase %>"><%= job.job_type %></label>
-                          </div>
-
-                          <div class="col-sm-4 text-center">
-                            <label class="label label-<%= job.urgency.delete(' ').downcase %>"><%= job.urgency %></label>
-                          </div>
-
-                          <div class="col-sm-4 text-center">
+                          <div class="col-sm-12 text-center">
+                            <label class="label label-<%= job.job_type.delete(' ').downcase %>"><%= job.job_type %></label> |
+                            <label class="label label-<%= job.urgency.delete(' ').downcase %>"><%= job.urgency %></label> |
                             <% if job.is_paid == true %>
                               <label class="label label-green">Paid</label>
                             <% else %>
@@ -58,7 +52,7 @@
                         <div class="small-gap"></div>
 
                         <div class="row">
-                          <div class="col-sm-12">
+                          <div class="col-sm-12 text-center">
                             <p class="small"><strong>Working location:</strong> <%= job.city %>, <%= job.province %></p>
                             <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %></p>
                             <p class="small"><strong>Dificulties:</strong> <%= job.difficulties %> Application</p>
