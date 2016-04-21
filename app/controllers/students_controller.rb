@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
   def index
     @search = Student.ransack(params[:q])
-    @students = @search.result.includes(:resume)
+    @students = @search.result.includes(:resume).paginate(page: params[:page], per_page: 20)
   end
 
   def search

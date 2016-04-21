@@ -4,7 +4,7 @@ class CompaniesController <ApplicationController
 
   def index
     @search = Company.ransack(params[:q])
-    @companies = @search.result.includes(:profile)
+    @companies = @search.result.includes(:profile).paginate(page: params[:page], per_page: 20)
   end
 
   def search
