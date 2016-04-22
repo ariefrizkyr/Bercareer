@@ -46,11 +46,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: ENV['SENDGRID_URL'],
+    address: Rails.application.secrets.sendgrid_url,
     port: 587,
     enable_starttsl_auto: true,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: Rails.application.secrets.sendgrid_username,
+    password: Rails.application.secrets.sendgrid_password,
     authentication: 'login'
   }
 
