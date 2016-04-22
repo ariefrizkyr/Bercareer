@@ -88,11 +88,11 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     domain: 'bercareer.com',
-    address: ENV['SENDGRID_URL'],
+    address: 'smtp.sendgrid.net',
     port: 587,
     enable_starttsl_auto: true,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: 'ariefrizkyr',
+    password: 'omgoogle1234',
     authentication: 'login'
   }
 end
