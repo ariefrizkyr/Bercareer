@@ -1,0 +1,8 @@
+SENGRID_URL: 'smtp.sendgrid.net'
+SENDGRID_USERNAME: 'ariefrizkyr'
+SENDGRID_PASSWORD: 'omgoogle1234'
+
+# production:
+SENGRID_URL: 'smtp.sendgrid.net'
+SENDGRID_USERNAME: 'ariefrizkyr'
+SENDGRID_PASSWORD: 'omgoogle1234'
