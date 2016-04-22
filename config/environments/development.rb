@@ -46,7 +46,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: ENV['SENGRID_URL'],
+    address: ENV['SENDGRID_URL'],
     port: 587,
     enable_starttsl_auto: true,
     user_name: ENV['SENDGRID_USERNAME'],
