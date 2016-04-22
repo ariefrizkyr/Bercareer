@@ -93,6 +93,6 @@ Rails.application.configure do
     enable_starttsl_auto: true,
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    authentication: :plain
+    authentication: 'login'
   }
 end
