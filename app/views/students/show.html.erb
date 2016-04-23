@@ -210,14 +210,14 @@
     score: function() {
       return $(this).attr('data-score');
     },
-    path: "<%= asset_path('assets/') %>"
+    path: ""
   });
 </script>
 
 <script>
   $('.average-feedback-rating').raty({
     readOnly: true,
-    path: "<%= asset_path('assets/') %>",
+    path: "",
     score: function() {
       return $(this).attr('data-score')
     }

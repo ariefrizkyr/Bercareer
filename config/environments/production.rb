@@ -99,10 +99,6 @@ Rails.application.configure do
   # Use S3 for paperclip storage
   config.paperclip_defaults = {
     :storage => :s3,
-    :s3_credentials => {
-      :bucket => 'bercareer-images',
-      :access_key_id => 'AKIAJCFCUOYHATEJTLZQ',
-      :secret_access_key => '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'
-    }
-}
+    :bucket => 'bercareer-images'
+  }
 end
