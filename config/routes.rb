@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
   resources :contacts, only: [:new, :create]
+  resources :registrations, only: [:new, :create]
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
