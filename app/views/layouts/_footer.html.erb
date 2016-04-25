@@ -1,7 +1,7 @@
 <div class="gray-background padding-top padding-bottom">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-6">
         <h4 class="bold">For Students</h4>
         <%= link_to 'Jobs', jobs_path %><br>
         <%= link_to 'Internship', jobs_path %><br>
@@ -9,7 +9,7 @@
         <%= link_to 'Student Term of Service', '#' %>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-6">
         <h4 class="bold">For Employers</h4>
         <%= link_to 'Hire Employers', employers_path %><br>
         <%= link_to 'Hire Intern', employers_path %><br>
@@ -17,30 +17,29 @@
         <%= link_to 'Company Term of Service', '#' %><br>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-6">
         <h4 class="bold">Bercareer</h4>
         <%= link_to 'About', about_path %><br>
         <%= link_to 'Contact', new_contact_path %><br>
         <%= link_to 'Privacy Policy', '#' %>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-6">
         <h4 class="bold">Find Us</h4>
-        <%= image_tag('logo.png', width: '250px') %>
-        <div class="small-gap"></div>
-        <div class="col-sm-4 text-center">
+
+        <div class="col-md-4 col-sm-4 text-center">
           <%= link_to 'https://www.facebook.com/bercareer' do %>
             <%= icon('facebook-square', class: 'strong fa-2x', style: 'color: #3b5998') %>
           <% end %>
         </div>
 
-        <div class="col-sm-4 text-center">
+        <div class="col-md-4 col-sm-4 text-center">
           <%= link_to 'https://twitter.com/bercareer' do %>
             <%= icon('twitter-square', class: 'strong fa-2x', style: 'color: #55acee') %>
           <% end %>
         </div>
 
-        <div class="col-sm-4 text-center">
+        <div class="col-md-4 col-sm-4 text-center">
           <%= link_to 'https://instagram.com/bercareer' do %>
             <%= icon('instagram', class: 'strong fa-2x', style: 'color: #3f729b') %>
           <% end %>
@@ -48,6 +47,8 @@
       </div>
     </div>
 
+    <div class="medium-gap"></div>
+    
     <div class="row">
       <div class="col-md-12">
         <p>&copy; 2016 Bercareer. Hak cipta dilindungi.</p>
