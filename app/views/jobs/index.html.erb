@@ -12,7 +12,7 @@
 
           <div class="col-md-4">
             <div class="form-group">
-              <%= f.select :job_type_cont, ["Full Time", "Part Time", "Freelance", "Internship"], { include_blank: 'Job Type' }, class: 'form-control' %>
+              <%= f.select :job_type_cont, job_type, { include_blank: 'Job Type' }, class: 'form-control' %>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
 <div class="container">
   <div class="row">
     <% @jobs.each do |job| %>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-6">
         <div class="panel panel-green">
           <div class="panel-body">
             <div class="row">

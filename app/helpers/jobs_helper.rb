@@ -1,4 +1,9 @@
 module JobsHelper
+
+  def job_type
+    ["Full Time", "Part Time", "Freelance", "Internship"]
+  end
+  
   def city
     ["Kabupaten Aceh Barat", "Kabupaten Aceh Barat Daya", "Kabupaten Aceh Besar", "Kabupaten Aceh Jaya",
      "Kabupaten Aceh Selatan", "Kabupaten Aceh Singkil", "Kabupaten Aceh Tamiang", "Kabupaten Aceh Tengah",
