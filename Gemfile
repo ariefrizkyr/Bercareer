@@ -24,6 +24,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'mailboxer', '~> 0.13.0'
 gem 'mail_form', '~> 1.5.1'
 gem 'ransack', '~> 1.7'
+gem 'rails_admin', '~> 0.8.1'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

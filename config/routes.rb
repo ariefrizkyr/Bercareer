@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :admins
+
   root 'pages#index'
+
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
 
   get 'about' => 'pages#about'
   get 'employers' => 'pages#company_home'
