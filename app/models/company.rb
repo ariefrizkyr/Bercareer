@@ -24,4 +24,7 @@ class Company < ActiveRecord::Base
   validates :company_name, presence: true
   validates :phone_number, presence: true, numericality: true, uniqueness: true
 
+  def to_param
+   "#{id}-#{company_name.parameterize}"
+  end
 end

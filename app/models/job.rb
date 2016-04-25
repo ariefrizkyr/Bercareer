@@ -25,4 +25,8 @@ class Job < ActiveRecord::Base
   validates :difficulties, presence: true
   validates :main_category, presence: true
   validates :second_category, presence: true, allow_blank: true
+
+  def to_param
+   "#{id}-#{job_title.parameterize}"
+  end
 end
