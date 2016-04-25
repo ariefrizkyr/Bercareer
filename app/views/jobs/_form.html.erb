@@ -186,10 +186,14 @@
 
             <div class="col-sm-6">
               <div class="form-group">
-                <%= f.input :end_period, as: :date, start_year: Date.today.year,
+                <%= f.input :end_period, input_html: {class: 'end-work'}, as: :date, start_year: Date.today.year,
                                                     end_year: Date.today.year + 5, ignore_day: true,
                                                     order: [:month, :year],
                                                     label: 'End working period' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.input :is_flexible, label: 'Not defined end work period.', input_html: {class: 'flex-end-work'}  %>
               </div>
             </div>
           </div>

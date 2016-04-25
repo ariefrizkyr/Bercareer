@@ -30,14 +30,6 @@
 
         <div class="row">
           <div class="col-sm-12">
-            <h4 class="media-heading">About:</h4>
-            <%= simple_format(@company.profile.description) %>
-          </div>
-        </div>
-        <hr>
-
-        <div class="row">
-          <div class="col-sm-12">
             <h4 class="media-heading">Average Review from students:</h4>
             <div class="average-review-rating" data-score="<%= @average_review %>"></div>
             <small>Based on <%= @company.reviews.count %> reviews</small><br>
@@ -65,6 +57,20 @@
   </div>
 
   <div class="col-md-8">
+    <div class="panel panel-green">
+      <div class="panel-heading text-center">
+        <h3><strong>About the Company</strong></h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="media-heading">About:</h4>
+            <%= simple_format(@company.profile.description) %>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="panel panel-green">
       <div class="panel-heading text-center">
         <h3><strong>Jobs Available</strong></h3>

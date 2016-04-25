@@ -75,7 +75,12 @@
             <div class="row">
               <div class="col-sm-12">
                 <p class="small"><strong>Working location:</strong> <%= job.city %>, <%= job.province %></p>
-                <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> - <%= job.start_period.strftime("%B %Y") %></p>
+                <p class="small"><strong>Working period:</strong> <%= job.start_period.strftime("%B %Y") %> -
+                <% if is_flexible = true %>
+                  No specific time.</p>
+                <% else %>
+                  <%= job.start_period.strftime("%B %Y") %></p>
+                <% end %>
                 <p class="small"><strong>Dificulties:</strong> <%= job.difficulties %> Application</p>
                 <p class="small"><strong>Deadline:</strong> <%= job.deadline.strftime("%d %B %Y at %H:%M") %></p>
                 <%= link_to 'Job Details', job, class: 'btn btn-block btn-green' %>

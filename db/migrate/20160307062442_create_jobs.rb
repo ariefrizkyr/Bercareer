@@ -14,6 +14,7 @@ class CreateJobs < ActiveRecord::Migration
       t.boolean :is_paid
       t.integer :salary
       t.string :salary_interval
+      t.boolean :is_flexible
       t.date :start_period
       t.date :end_period
       t.time :start_work

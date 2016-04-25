@@ -28,5 +28,15 @@
         $(".salary").prop("disabled", "disabled");
       }
     });
+    // job is flexible work period
+    $(".flex-end-work").click(function() {
+      var isFlex = $(this).prop("checked");
+      if (isFlex == false) {
+        $(".end-work").prop("disabled", false);
+      }
+      else {
+        $(".end-work").prop("disabled", "disabled");
+      }
+    });
   });
 </script>
