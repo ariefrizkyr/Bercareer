@@ -106,7 +106,7 @@
               <% if is_flexible = true %>
                 No specific time.
               <% else %>
-                <%= job.start_period.strftime("%B %Y") %>
+                <%= job.end_period.strftime("%B %Y") %>
               <% end %>
             </div>
           </div>

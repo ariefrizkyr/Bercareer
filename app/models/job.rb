@@ -17,7 +17,7 @@ class Job < ActiveRecord::Base
   validates :salary, presence: true, allow_blank: true
   validates :salary_interval, presence: true, allow_blank: true
   validates :start_period, presence: true
-  validates :end_period, presence: true
+  validates :end_period, presence: true, allow_blank: true
   validates :start_work, presence: true
   validates :end_work, presence: true
   validates :deadline, presence: true
