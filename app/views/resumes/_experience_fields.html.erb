@@ -23,10 +23,6 @@
                                             input_html: { class: 'form-control' },
                                             label: 'Start work period' %>
       </div>
-
-      <div class="form-group">
-        <%= f.input :is_current, label: 'Currently work here', input_html: { class: 'current' } %>
-      </div>
     </div>
 
     <div class="col-sm-6">
@@ -36,6 +32,10 @@
                                             order: [:month, :year],
                                             input_html: { class: 'form-control' },
                                             label: 'End work period' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.input :is_current, label: 'Currently work here', input_html: { class: 'current' } %>
       </div>
     </div>
   </div>
