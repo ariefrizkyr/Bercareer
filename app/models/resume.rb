@@ -9,6 +9,7 @@ class Resume < ActiveRecord::Base
   acts_as_taggable_on :skills, :languages
 
   has_attached_file :photo, styles: { medium: "300x300>", small: "150x150>", thumb: "100x100>", profile: "250x250#" }
+                          , default_url: 'missing_pict.png'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   validates :gender, presence: true
