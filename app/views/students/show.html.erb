@@ -5,7 +5,7 @@
     <div class="col-md-4">
       <div class="panel panel-green">
         <div class="panel-heading text-center">
-          <%= image_tag @student.resume.photo.url(:profile), class: 'img-circle', style: 'border: 5px solid #fff; max-width: 80%;' %>
+          <%= image_tag @student.resume.photo.url(:profile), class: 'img-circle', style: 'border: 5px solid #fff;' %>
           <h3><strong><%= @student.first_name %> <%= @student.last_name %></strong></h3>
           <h5><strong><%= @student.resume.major %>, <%= @student.resume.university %></strong></h5>
         </div>
