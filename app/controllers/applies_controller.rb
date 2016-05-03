@@ -5,6 +5,8 @@ class AppliesController < ApplicationController
     @apply = current_student.applies.create(apply_params)
 
     if @apply.save
+      StudentMailer.apply_created(current_student, @apply).deliver
+      CompanyMailer.job_applied(current_student, @apply).deliver
       flash[:success] = "Application Success!"
       redirect_to @apply.job
     else
