@@ -24,6 +24,7 @@ class JobsController < ApplicationController
     @job = current_company.jobs.build(job_params)
 
     if @job.save
+      JobMailer.job_created(current_company, @job).deliver
       flash[:success] = "Job created!"
       redirect_to @job
     else
