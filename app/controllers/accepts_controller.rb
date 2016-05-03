@@ -5,6 +5,8 @@ class AcceptsController < ApplicationController
     @accept = current_company.accepts.create(accept_params)
 
     if @accept.save
+      CompanyMailer.accept_created(current_company, @accept).deliver
+      StudentMailer.job_accepted(current_company, @accept).deliver
       flash[:success] = "Your candidate has been accepted!"
       redirect_to your_employee_path
     else

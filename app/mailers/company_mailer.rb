@@ -19,4 +19,14 @@ class CompanyMailer < ActionMailer::Base
          subject: "[Bercareer] New Applicant to Your Job"
         )
   end
+
+  def accept_created(current_company, accept)
+    @current_company = current_company
+    @accept = accept
+    
+    mail(to: current_company.email,
+         from: "Bercareer <no-reply@bercareer.com>",
+         subject: "[Bercareer] Congratulations! You Have New Employee"
+        )
+  end
 end
