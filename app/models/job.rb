@@ -26,7 +26,28 @@ class Job < ActiveRecord::Base
   validates :main_category, presence: true
   validates :second_category, presence: true, allow_blank: true
 
+  validate :end_period_is_after_start_period
+  validate :end_work_is_after_start_work
+  
   def to_param
    "#{id}-#{job_title.parameterize}"
   end
+
+  private
+
+    def end_period_is_after_start_period
+      return end_period.blank? || start_period.blank?
+
+      if end_period < start_period
+        errors.add(:end_period, "The end period can't be before start period.")
+      end
+    end
+
+    def end_work_is_after_start_work
+      return end_work.blank? || start_work.blank?
+
+      if end_work < start_work
+        errors.add(:end_work, "the end work hour can't be before start work hour.")
+      end
+    end
 end
