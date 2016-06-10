@@ -22,7 +22,7 @@ class Student < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :nim, presence: true, numericality: true, uniqueness: true
-  validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+\.ac.id\z/, message: 'must be an university email (user@email.ac.id)' }
+  
   def to_param
    "#{id}-#{first_name.parameterize}-#{last_name.parameterize}"
   end
