@@ -88,17 +88,17 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     domain: 'bercareer.com',
-    address: 'smtp.sendgrid.net',
+    address: 'xxx',
     port: 587,
     enable_starttsl_auto: true,
-    user_name: 'ariefrizkyr',
-    password: 'omgoogle1234',
+    user_name: 'xxx',
+    password: 'xxx',
     authentication: 'login'
   }
 
   # Use S3 for paperclip storage
   config.paperclip_defaults = {
     :storage => :s3,
-    :bucket => 'bercareer-images'
+    :bucket => 'xxx'
   }
 end
