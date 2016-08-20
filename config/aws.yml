@@ -1,7 +1,7 @@
 development:
-  access_key_id: 'AKIAJCFCUOYHATEJTLZQ'
-  secret_access_key: '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'
+  access_key_id: 'xxx'
+  secret_access_key: 'xxx'
 
 production:
-  access_key_id: 'AKIAJCFCUOYHATEJTLZQ'
-  secret_access_key: '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'
+  access_key_id: 'xxx'
+  secret_access_key: 'xxx'
